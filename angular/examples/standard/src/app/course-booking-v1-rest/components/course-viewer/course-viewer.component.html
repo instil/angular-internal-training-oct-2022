@@ -1,0 +1,26 @@
+<h2>Our Training Portfolio</h2>
+<section>
+  <span>Current messages:</span>
+  <mark *ngIf="status">{{ status }}</mark>
+</section>
+<div *ngIf="selectedCourse">
+  <app-course-detail-viewer [course]="selectedCourse"></app-course-detail-viewer>
+</div>
+
+<table>
+  <thead>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th colspan="2"></th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let course of courses"
+      app-course-row-display
+      [course]="course"
+      (courseSelected)="courseSelected($event)"
+      (courseDeleted)="courseDeleted($event)">
+  </tr>
+  </tbody>
+</table>

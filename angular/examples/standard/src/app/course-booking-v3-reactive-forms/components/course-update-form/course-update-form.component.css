@@ -1,0 +1,17 @@
+.ng-valid:not(form) {
+  box-shadow: blue 5px 5px 8px;
+}
+
+.ng-invalid:not(form) {
+  box-shadow: red 5px 5px 8px;
+}
+
+.error-msg {
+  color: red;
+  padding-left: 10px;
+}
+
+fieldset {
+  margin-top: 10px;
+  border: none;
+}

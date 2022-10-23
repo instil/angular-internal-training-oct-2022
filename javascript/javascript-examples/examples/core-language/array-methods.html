@@ -1,0 +1,54 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Methods of the Array type")
+
+            const arrayOne = ["aaa", "eee", "bbb", "ddd", "ccc"];
+
+            printTitle("Original Array");
+            printResult(arrayOne.join());
+
+            printTitle("Joined with custom separator")
+            printResult(arrayOne.join("#"));
+
+            printTitle("Reversed Array");
+            arrayOne.reverse();
+            printResult(arrayOne);
+
+            printTitle("Sorted Array");
+            arrayOne.sort();
+            printResult(arrayOne);
+
+            printTitle("Custom Sorted Array");
+            const reverseSort = (s1, s2) => s1.charAt(0) > s2.charAt(0) ? -1 : 1;
+            arrayOne.sort(reverseSort);
+            printResult(arrayOne);
+
+            printTitle("Array Built from Concatenation");
+            const arrayTwo = arrayOne.concat("xxx", "yyy", "zzz");
+            printResult(arrayTwo);
+
+            printTitle("Array built from Slicing");
+            const arrayThree = arrayOne.slice(0, 3);
+            printResult(arrayThree);
+
+            printTitle("Spliced Array");
+            arrayOne.splice(2, 0, 123);
+            printResult(arrayOne);
+
+            printTitle("Array After Push And Unshift");
+            arrayOne.push("QQQQQ");
+            arrayOne.unshift("WWWWW");
+            printResult(arrayOne);
+
+            printTitle("Array After Pop And Shift");
+            arrayOne.pop();
+            arrayOne.shift();
+            printResult(arrayOne);
+
+            printTitle("Final Array Contents");
+            printResult(arrayOne);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

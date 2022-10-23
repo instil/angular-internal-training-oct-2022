@@ -1,0 +1,22 @@
+<div>
+    <script>
+        (function () {
+            const myVar1 = new Array(4);
+            const myVar2 = ",,,";
+            const myVar3 = 1.00000000000000001;
+            const myVar4 = 1;
+
+            if (myVar1 == myVar2) {
+                printResult("JavaScript array equality is problematic");
+            } else {
+                printResult("JavaScript array equality is fine");
+            }
+            if (myVar3 == myVar4) {
+                printResult("Numeric equality will also surprise you");
+            } else {
+                printResult("Numeric equality will not surprise you");
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

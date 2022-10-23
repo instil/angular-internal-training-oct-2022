@@ -1,0 +1,11 @@
+div {
+  background: aliceblue;
+  border: black 2px double;
+  padding: 1em;
+
+  strong {
+    border-bottom: black 1px solid;
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+}

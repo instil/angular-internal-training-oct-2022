@@ -1,0 +1,7 @@
+<h2>Counter: {{counter}}</h2>
+
+<button class="btn btn-primary me-1" (click)="storeLap(1)">Store Lap 1</button>
+<button class="btn btn-primary me-1" (click)="storeLap(2)">Store Lap 2</button>
+<button class="btn btn-primary" (click)="storeLaps()">Store Laps</button>
+
+<app-lap-counter [lap1]="lap1" [lap2]="lap2"></app-lap-counter>

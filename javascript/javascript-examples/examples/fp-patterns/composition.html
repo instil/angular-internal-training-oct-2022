@@ -1,0 +1,34 @@
+<div>
+    <script>
+        (function () {
+            function uppercase(text) {
+                return text.toUpperCase();
+            }
+
+            function replaceVowels(text) {
+                return text.replaceAll(/[aeiou]+/ig, '#');
+            }
+
+            function countVowels(text) {
+                const matches = text.match(/[aeiou]+/ig);
+                const count = matches === null ? 0 : matches.length;
+                return `${text}${count}`;
+            }
+
+            printTitle('Composing Functions');
+
+            const demo1 = R.compose(uppercase);
+            printResult(demo1('Fortune favors the prepared mind.'));
+
+            const demo2 = R.compose(uppercase, countVowels);
+            printResult(demo2('Fortune favors the prepared mind.'));
+
+            const demo3 = R.compose(uppercase, countVowels, replaceVowels);
+            printResult(demo3('Fortune favors the prepared mind.'));
+
+            const demo4 = R.compose(uppercase, replaceVowels, countVowels);
+            printResult(demo4('Fortune favors the prepared mind.'));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

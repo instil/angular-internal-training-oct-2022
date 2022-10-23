@@ -1,0 +1,217 @@
+<div>
+    <script>
+        (function () {
+            class Visited {
+
+            }
+
+            class Document extends Visited {
+                constructor(props) {
+                    super();
+                    this.modules = [];
+
+                }
+
+                acceptVisitor(visitor) {
+                    visitor.visitDocumentStart(this);
+                    for (const m of this.modules) {
+                        m.acceptVisitor(visitor);
+                    }
+                    visitor.visitDocumentEnd();
+                }
+
+                addModule(m) {
+                    this.modules.push(m);
+                }
+            }
+
+            class Module extends Visited {
+                constructor() {
+                    super();
+                    this.sections = [];
+                }
+
+                acceptVisitor(visitor) {
+                    visitor.visitModuleStart(this);
+                    for (const s of this.sections) {
+                        s.acceptVisitor(visitor);
+                    }
+                    visitor.visitModuleEnd();
+                }
+
+                addSection(s) {
+                    this.sections.push(s);
+                }
+            }
+
+            class Section extends Visited {
+                constructor(title) {
+                    super();
+                    this.title = title;
+                    this.paragraphs = [];
+                }
+
+                acceptVisitor(visitor) {
+                    visitor.visitSectionStart(this);
+                    for (const p of this.paragraphs) {
+                        p.acceptVisitor(visitor);
+                    }
+                    visitor.visitSectionEnd();
+                }
+
+                addParagraph(p) {
+                    this.paragraphs.push(p);
+                }
+            }
+
+            class Paragraph extends Visited {
+                constructor(text) {
+                    super();
+                    this.text = text;
+                }
+
+                acceptVisitor(visitor) {
+                    visitor.visitParagraphStart(this);
+                    visitor.visitParagraphEnd();
+                }
+
+                toString() {
+                    return this.text;
+                }
+            }
+
+            class Title extends Visited {
+                constructor(text) {
+                    super();
+                    this.text = text;
+                }
+
+                acceptVisitor(visitor) {
+                    visitor.visitTitleStart(this);
+                    visitor.visitTitleEnd();
+                }
+
+                toString() {
+                    return this.text;
+                }
+            }
+
+            class HTMLFormatVisitor {
+                constructor() {
+                    this.output = [];
+                    this.moduleCount = 0;
+                    this.sectionCount = 0;
+                }
+
+                visitDocumentStart(document) {
+                    this.output.push("<html><head/><body>");
+                }
+                visitDocumentEnd() {
+                    this.output.push("</body></html>");
+                }
+                visitModuleStart(module) {
+                    this.output.push(`<h2>Module ${++this.moduleCount}</h2>`);
+                }
+                visitModuleEnd() {}
+                visitParagraphStart(paragraph) {
+                    this.output.push(`<p>${paragraph}</p>`);
+                }
+                visitParagraphEnd(){}
+                visitSectionStart(section) {
+                    this.output.push(`<h3>Section ${++this.sectionCount}</h3>`);
+                }
+                visitSectionEnd() {}
+                visitTitleStart(title) {
+                this.output.push(`<h4>${title}</h4>`);
+                }
+                visitTitleEnd(){}
+
+                toString() {
+                    return this.output.join("\n");
+                }
+            }
+
+            class XMLFormatVisitor {
+                constructor() {
+                    this.output = [];
+                    this.moduleCount = 0;
+                    this.sectionCount = 0;
+                }
+
+                visitDocumentStart(document) {
+                    this.output.push("<document>");
+                }
+                visitDocumentEnd() {
+                    this.output.push("</document>");
+                }
+                visitModuleStart(module) {
+                    this.output.push(`<moduleheader>Module ${++this.moduleCount}</moduleheader>`);
+                }
+                visitModuleEnd() {}
+                visitParagraphStart(paragraph) {
+                    this.output.push(`<para>${paragraph}</para>`);
+                }
+                visitParagraphEnd(){}
+                visitSectionStart(section) {
+                    this.output.push(`<sectionHeader>Section ${++this.sectionCount}</sectionHeader>`);
+                }
+                visitSectionEnd() {}
+                visitTitleStart(title) {
+                    this.output.push(`<title>${title}</title>`);
+                }
+                visitTitleEnd(){}
+
+                toString() {
+                    return this.output.join("\n");
+                }
+            }
+
+            function buildDocument() {
+                const s1 = new Section(new Title("Section One"));
+                s1.addParagraph(new Paragraph("Paragraph One"));
+                s1.addParagraph(new Paragraph("Paragraph Two"));
+
+                const s2 = new Section(new Title("Section Two"));
+                s2.addParagraph(new Paragraph("Paragraph Three"));
+                s2.addParagraph(new Paragraph("Paragraph Four"));
+
+                const s3 = new Section(new Title("Section Three"));
+                s3.addParagraph(new Paragraph("Paragraph Five"));
+                s3.addParagraph(new Paragraph("Paragraph Six"));
+
+                const s4 = new Section(new Title("Section Four"));
+                s4.addParagraph(new Paragraph("Paragraph Seven"));
+                s4.addParagraph(new Paragraph("Paragraph Eight"));
+
+                const m1 = new Module();
+                m1.addSection(s1);
+                m1.addSection(s2);
+
+                const m2 = new Module();
+                m2.addSection(s3);
+                m2.addSection(s4);
+
+                const doc = new Document();
+                doc.addModule(m1);
+                doc.addModule(m2);
+
+                return doc;
+            }
+
+            const doc = buildDocument();
+
+            const v1 = new HTMLFormatVisitor();
+            doc.acceptVisitor(v1);
+
+            const v2 = new XMLFormatVisitor();
+            doc.acceptVisitor(v2);
+
+            printTitle("Output from the HTML Visitor");
+            printResult(v1);
+
+            printTitle("Output from the XML Visitor");
+            printResult(v2);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

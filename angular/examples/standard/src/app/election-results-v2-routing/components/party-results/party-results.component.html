@@ -1,0 +1,25 @@
+<table>
+  <thead>
+  <tr>
+    <th colspan="7">The Results For {{ partyName | i18nSelect: partyNamesMap }}</th>
+  </tr>
+  <tr>
+    <th>Constituency</th>
+    <th>Name</th>
+    <th>Votes Cast</th>
+    <th>Percentage of Vote</th>
+    <th>Overall Change</th>
+    <th>Percentage Change</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let record of results">
+    <td>{{ record.constituency }}</td>
+    <td>{{ record.name | lowercase }}</td>
+    <td>{{ record.votes | number:'5.2' }}</td>
+    <td>{{ record.percentage | percent }}</td>
+    <td>{{ record.change ? record.change : "N/A" }}</td>
+    <td>{{ record.change ? record.changeAmount : "N/A" }}</td>
+  </tr>
+  </tbody>
+</table>

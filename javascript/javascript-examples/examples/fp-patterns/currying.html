@@ -1,0 +1,53 @@
+<div>
+    <script>
+        (function () {
+            function sum(a, b, c) {
+                return a + b + c;
+            }
+
+            const curry = (func, ...args) => {
+                if (func.length <= args.length) {
+                    return func(...args);
+                }  else {
+                    return (...more) => curry(func, ...args, ...more);
+                }
+            };
+
+            printTitle('Currying');
+
+            printTitle('Explicit call');
+            printResult(sum(1, 2, 3));
+
+            printTitle('Curried call');
+            const curriedSum = curry(sum);
+            printResult(curriedSum(2)(1)(3));
+
+            printTitle('Partially curried call');
+            const partiallyCurried = curry(sum, 2, 3);
+            printResult(partiallyCurried(1));
+
+            const sampleData = [10, 20, 30, 40, 50, 60];
+
+            const add = (a, b) => a + b;
+            const subtract = (a, b) => a - b;
+
+            printTitle('Currying via Ramda');
+
+            printResult(R.reduce(add, 1000, sampleData));
+            printResult(R.reduce(subtract, 1000, sampleData));
+
+            const addAll = R.reduce(add);
+            const subtractAll = R.reduce(subtract);
+
+            printResult(addAll(1000, sampleData));
+            printResult(subtractAll(1000, sampleData));
+
+            const addAllToThousand = R.reduce(add)(1000);
+            const subtractAllFromThousand = R.reduce(subtract)(1000);
+
+            printResult(addAllToThousand(sampleData));
+            printResult(subtractAllFromThousand(sampleData));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

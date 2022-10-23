@@ -1,0 +1,9 @@
+<div>
+  <strong>
+    <!-- INTERESTING: We can render passed in templates -->
+    <ng-container [ngTemplateOutlet]="titleTemplate"></ng-container>
+  </strong>
+
+  <ng-container [ngTemplateOutlet]="contentTemplate"
+                [ngTemplateOutletContext]="{$implicit: 42}"></ng-container>
+</div>

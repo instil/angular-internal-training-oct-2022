@@ -1,0 +1,34 @@
+<div>
+    <script>
+        (function () {
+            printTitle('Illustrating Hoisting');
+
+            function demo() {
+                printResult(`C: ${myvar1}`);
+                printResult(`D: ${myvar2}`);
+
+                var myvar1 = "def";
+                printResult(`E: ${myvar1}`);
+                printResult(`F: ${myvar2}`);
+
+                if (1 < 2) {
+                    var myvar2 = 456;
+                }
+                printResult(`G: ${myvar1}`);
+                printResult(`H: ${myvar2}`);
+            }
+
+            var myvar1 = "abc";
+            var myvar2 = 123;
+
+            printResult(`A: ${myvar1}`);
+            printResult(`B: ${myvar2}`);
+
+            demo();
+
+            printResult(`I: ${myvar1}`);
+            printResult(`J: ${myvar2}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

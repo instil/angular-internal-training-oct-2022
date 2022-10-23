@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <script src="client-side-libraries/htmx/htmx.js"></script>
+    <script src="client-side-libraries/ramda/ramda.js"></script>
+    <script src="client-side-libraries/monet/monet.js"></script>
+    <script src="client-side-libraries/utils/utils.js"></script>
+    <link href="client-side-libraries/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="client-side-libraries/bootstrap/js/bootstrap.bundle.min.js"></script>
+    <title>JavaScript Language Examples</title>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <aside class="col-sm-4 bg-light"
+               hx-swap="innerHTML"
+               hx-target="#demo-region">
+            <h5>Making A Start</h5>
+            <ul>
+                <li><span hx-get="examples/hello.html">Hello</span></li>
+            </ul>
+            <h5>Core Language</h5>
+            <ul>
+                <li><span hx-get="examples/core-language/selection.html">Selection</span></li>
+                <li><span hx-get="examples/core-language/iteration.html">Iteration</span></li>
+                <li><span hx-get="examples/core-language/equality.html">Equality</span></li>
+                <li><span hx-get="examples/core-language/equality-issues.html">Issues With Equality</span></li>
+                <li><span hx-get="examples/core-language/typeof.html">Typeof</span></li>
+                <li><span hx-get="examples/core-language/instanceof.html">Instanceof</span></li>
+                <li><span hx-get="examples/core-language/hoisting.html">Hoisting</span></li>
+                <li><span hx-get="examples/core-language/arrays.html">Declaring Arrays</span></li>
+                <li><span hx-get="examples/core-language/arrays-multidimensional.html">Multidimensional Arrays</span>
+                </li>
+                <li><span hx-get="examples/core-language/array-methods.html">Array Methods</span></li>
+                <li><span hx-get="examples/core-language/declaring-functions.html">Declaring Functions</span></li>
+                <li><span hx-get="examples/core-language/calling-functions.html">Calling Functions</span></li>
+                <li><span hx-get="examples/core-language/nested-functions.html">Nested Functions</span></li>
+                <li><span hx-get="examples/core-language/ways-to-invoke-functions.html">Ways To Invoke Functions</span>
+                </li>
+                <li><span hx-get="examples/core-language/symbols.html">Symbols</span></li>
+            </ul>
+            <h5>Modern Features</h5>
+            <ul>
+                <li><span hx-get="examples/modern-features/block-scope.html">Block Scope</span></li>
+                <li><span hx-get="examples/modern-features/for-of-loop.html">For Of Loop</span></li>
+                <li><span hx-get="examples/modern-features/destructuring.html">Destructuring</span></li>
+                <li><span hx-get="examples/modern-features/arrow-functions.html">Arrow Functions</span></li>
+                <li><span
+                        hx-get="examples/modern-features/arrow-functions-and-this.html">Arrow Functions And This</span>
+                </li>
+                <li><span hx-get="examples/modern-features/maps.html">The Map Structure</span></li>
+                <li><span hx-get="examples/modern-features/spread-operator.html">The Spread Operator</span></li>
+                <li><span
+                        hx-get="examples/modern-features/class-declaration-syntax.html">Class Declaration Syntax</span>
+                </li>
+                <li><span
+                        hx-get="examples/modern-features/enhancements-to-standard-types.html">Enhancements To Types</span>
+                </li>
+                <li><span hx-get="examples/modern-features/template-literals.html">Template Literals</span></li>
+                <li><span hx-get="examples/modern-features/generators.html">Generators</span></li>
+                <li><span hx-get="examples/modern-features/proxies.html">Proxies</span></li>
+            </ul>
+            <h5>Asynchronous JavaScript</h5>
+            <ul>
+                <li><span hx-get="examples/async-coding/promises-syntax.html">Promises Syntax</span></li>
+                <li><span hx-get="examples/async-coding/promises-and-finally.html">Promises And Finally</span></li>
+                <li><span hx-get="examples/async-coding/promises-vs-async.html">Promises vs Async Methods</span></li>
+                <li><span hx-get="examples/async-coding/promises-and-generators.html">Promises and Generators</span>
+                </li>
+            </ul>
+            <h5>Functional Patterns</h5>
+            <ul>
+                <li><span hx-get="examples/fp-patterns/composition.html">Composing Functions</span></li>
+                <li><span hx-get="examples/fp-patterns/functional-toolkit.html">The Functional Toolkit</span></li>
+                <li><span hx-get="examples/fp-patterns/higher-order-functions.html">Higher Order Functions</span></li>
+                <li><span hx-get="examples/fp-patterns/corecursion.html">Applying Corecursion</span></li>
+                <li><span hx-get="examples/fp-patterns/currying.html">Currying Functions</span></li>
+                <li>
+                    Monadic Types:
+                    <ul>
+                        <li><span hx-get="examples/fp-patterns/monads-maybe.html">Maybe Monad</span></li>
+                        <li><span hx-get="examples/fp-patterns/monads-either.html">Either Monad</span></li>
+                        <li><span hx-get="examples/fp-patterns/monads-validated.html">Validated Monad</span></li>
+                    </ul>
+                </li>
+            </ul>
+            <h5>Design Patterns</h5>
+            <ul>
+                <li>
+                    Command Pattern
+                    <ul>
+                        <li><span hx-get="examples/oo-patterns/behavioural/command/before/command.html">Before</span>
+                        </li>
+                        <li><span hx-get="examples/oo-patterns/behavioural/command/after/command.html">After</span></li>
+                        <li><span
+                                hx-get="examples/oo-patterns/behavioural/command/functional/command.html">Functional</span>
+                        </li>
+                    </ul>
+
+                </li>
+                <li><span
+                        hx-get="examples/oo-patterns/behavioural/template-method/template-method.html">Template Method</span>
+                </li>
+                <li><span hx-get="examples/oo-patterns/behavioural/iterator/iterator.html">Iterator</span></li>
+                <li><span
+                        hx-get="examples/oo-patterns/behavioural/chain-of-responsibility/chain-of-responsibility.html">Chain Of Responsibility</span>
+                </li>
+                <li><span
+                        hx-get="examples/oo-patterns/behavioural/visitor/visitor.html">Visitor</span>
+                </li>
+                <li><span hx-get="examples/oo-patterns/structural/decorator/decorator.html">Decorator</span></li>
+                <li><span hx-get="examples/oo-patterns/structural/adapter/adapter.html">Adapter</span></li>
+                <li><span hx-get="examples/oo-patterns/structural/flyweight/flyweight.html">Flyweight</span></li>
+                <li>
+                    Builder Pattern
+                    <ul>
+                        <li><span hx-get="examples/oo-patterns/creational/builder/before/builder.html">Before</span>
+                        </li>
+                        <li><span hx-get="examples/oo-patterns/creational/builder/after/builder.html">After</span></li>
+                    </ul>
+                </li>
+                <li><span hx-get="examples/oo-patterns/creational/singleton/singleton.html">Singleton</span></li>
+                <li><span
+                        hx-get="examples/oo-patterns/creational/factory-method/factory-method.html">Factory Method</span>
+                </li>
+                <li><span hx-get="examples/oo-patterns/creational/abstract-factory/abstract-factory.html">Abstract Factory</span>
+                </li>
+            </ul>
+        </aside>
+        <div class="col-sm-8">
+            <div id="demo-region" class="sticky-top">
+                <hr/>
+                <h2>Output from demos appears here</h2>
+                <hr/>
+                <p>
+                    All the demos are independent of one another. They do however make
+                    use of the libraries listed below, plus the helper functions found
+                    in <em>client-side-libraries/utils</em>.
+                </p>
+                <ul>
+                    <li><a href="https://getbootstrap.com/">Bootstrap</a> (CSS support)</li>
+                    <li><a href="https://htmx.org/">Htmx</a> (simplified AJAX)</li>
+                    <li><a href="https://ramdajs.com/">Ramda</a> (extra FP operations)</li>
+                    <li><a href="https://monet.github.io/monet.js/">Monet</a> (Monadic types)</li>
+                </ul>
+                <p>
+                    To avoid security restrictions each demo is loaded from a locally running
+                    web server. The server can be kicked off via the <em>start</em> command in
+                    <em>package.json</em>. You will need <a href="https://nodejs.org/en/">Node.js</a>
+                    for this to work.
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

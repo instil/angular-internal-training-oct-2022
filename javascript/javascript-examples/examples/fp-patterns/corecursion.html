@@ -1,0 +1,33 @@
+<div>
+    <script>
+        (function () {
+            class Employee {
+                constructor(name, salary) {
+                    this.name = name;
+                    this.salary = salary;
+                }
+
+                toString() {
+                    return `${this.name} earning ${this.salary}`;
+                }
+            }
+
+            function buildTestData(name, salary, count) {
+                const f = num => {
+                    if (num === count) {
+                        return false;
+                    }
+                    const emp = new Employee(`${name}${num}`, num * salary);
+                    return [emp, num + 1];
+                }
+                return R.unfold(f, 0);
+            }
+
+            const results = buildTestData('Jane', 1000, 10);
+
+            printTitle("Corecursion");
+            results.forEach(printResult);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

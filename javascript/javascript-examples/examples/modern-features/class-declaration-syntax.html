@@ -1,0 +1,48 @@
+<div>
+    <script>
+        (function () {
+            printTitle('Basic class declarations');
+
+            class Employee {
+                constructor(name) {
+                    this.name = name;
+                }
+
+                calcSalary() {
+                    printResult(`Calculating salary for ${this.name}`);
+                }
+
+                takeHoliday() {
+                    printResult(`${this.name} is taking a holiday`);
+                }
+            }
+
+            class Manager extends Employee {
+                constructor(name) {
+                    super(name);
+                }
+
+                promote(employee) {
+                    printResult(`${this.name} is promoting ${employee.name}`);
+                }
+
+                downsize(employee) {
+                    printResult(`${this.name} is downsizing ${employee.name}`);
+                }
+            }
+
+            const dave = new Employee("Dave");
+            dave.calcSalary();
+            dave.takeHoliday();
+
+            const jane = new Manager("Jane");
+            const fred = new Manager("Fred");
+            jane.calcSalary();
+            fred.takeHoliday();
+
+            jane.promote(dave);
+            fred.downsize(dave);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,81 @@
+<div>
+    <script>
+        (function () {
+            class Calculator {
+                constructor() {
+                    this.value = 34;
+                }
+
+                add(value) {
+                    this.value = this.value + value;
+                }
+
+                subtract(value) {
+                    this.value -= value;
+                }
+
+                multiply(value) {
+                    this.value *= value;
+                }
+
+                divide(value) {
+                    this.value /= value;
+                }
+            }
+
+            function updateResult() {
+                document.getElementById('result').innerHTML = calculator.value;
+            }
+
+            function universalHandler(event) {
+                console.log(`Handler called for ${event.target.id}`);
+
+                const value = parseFloat(document.getElementById('value').value);
+                const target = event.target.id;
+
+                switch(target) {
+                    case "add":
+                        calculator.add(value);
+                        break;
+                    case "subtract":
+                        calculator.subtract(value);
+                        break;
+                    case "multiply":
+                        calculator.multiply(value);
+                        break;
+                    case "divide":
+                        calculator.divide(value);
+                        break;
+                    case "undo":
+                        throw new Error("Don't know how to do this!");
+                }
+                updateResult();
+            }
+
+            const calculator = new Calculator();
+            ["add", "subtract", "multiply", "divide", "undo"].forEach(name => {
+                console.log(`Adding handler for ${name}`);
+                document.getElementById(name).addEventListener('click', universalHandler);
+            });
+        })();
+    </script>
+    <h2>The Command Pattern</h2>
+    <div class="container">
+        <form class="form mb-5">
+            <div>
+                <label>Value</label>
+                <input id="value" type="number" value="2">
+            </div>
+            <div class="mt-2 mb-2 row">
+                <input class="btn btn-primary col-2 mr-2" id="add" type="button" value="Add">
+                <input class="btn btn-primary col-2 mr-2" id='subtract' type="button" value="Subtract">
+                <input class="btn btn-primary col-2 mr-2" id='multiply' type="button" value="Multiply">
+                <input class="btn btn-primary col-2 mr-2" id='divide' type="button" value="Divide">
+            </div>
+            <div class="row">
+                <input class="btn btn-danger col-2 mr-2" id='undo' type="button" value="Undo">
+            </div>
+        </form>
+        <h1>Result <span id="result"></span></h1>
+    </div>
+</div>

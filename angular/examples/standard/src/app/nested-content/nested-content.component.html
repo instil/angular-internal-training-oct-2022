@@ -1,0 +1,38 @@
+<label>
+  Input Value:
+  <input type="range" min="1" max="5" [(ngModel)]="value">
+  {{value}}
+</label>
+
+<h2>NG Contetn Example</h2>
+
+<app-simple-card title="Ng Content Card">
+  <div>
+    <p>In this card we have some nested content.</p>
+    <p>This allows us to compose easily.</p>
+    <p>We can even embed values in the content - {{value}}</p>
+  </div>
+</app-simple-card>
+
+<hr>
+
+<app-multi-content-card>
+  <span>Multi Ng Content Card</span>
+  <ng-container body>
+    <p>
+      In this card we have two content types, one filtered by tag and the other
+      is selected by an attribute (body) present. ng-container means we aren't using
+      any tag (div, span etc) to select the content.
+    </p>
+  </ng-container>
+</app-multi-content-card>
+
+<hr>
+
+<app-template-card>
+  <ng-template #title>Template Card</ng-template>
+  <ng-template #content let-value>
+    <p>In this card we have two templates.</p>
+    <p>The parent can pass values into the template - {{value}}.</p>
+  </ng-template>
+</app-template-card>

@@ -1,0 +1,43 @@
+<div>
+    <script>
+        (function () {
+            function wrapInH1(text) {
+                return `<h1>${text}</h1>`;
+            }
+
+            function wrapInH2(text) {
+                return `<h2>${text}</h2>`;
+            }
+
+            function wrapInTag(tagName, text) {
+                const openingTag = `<${tagName}>`;
+                const closingTag = `</${tagName}>`;
+
+                return `${openingTag}${text}${closingTag}`;
+            }
+
+            function buildWrapper(tagName) {
+                const openingTag = `<${tagName}>`;
+                const closingTag = `</${tagName}>`;
+
+                return (text) => `${openingTag}${text}${closingTag}`;
+            }
+
+            const wrapInMark = buildWrapper('mark');
+            const wrapInDiv = buildWrapper('div');
+
+            const results = [
+                wrapInH1("Marge"),
+                wrapInH2("Homer"),
+                wrapInTag("h3", "Bart"),
+                wrapInTag("h4", "Lisa"),
+                wrapInMark("Maggie"),
+                wrapInDiv("Snowball"),
+                wrapInDiv("Santa's Little Helper")
+            ]
+
+            results.forEach(printResult);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

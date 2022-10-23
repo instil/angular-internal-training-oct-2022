@@ -1,0 +1,15 @@
+<div>
+  <button class="btn me-1" routerLinkActive="btn-primary" routerLink="user">User</button>
+  <button class="btn" routerLinkActive="btn-primary" routerLink="admin" [disabled]="!isAdmin">Admin</button>
+</div>
+<div>
+  <label>
+    Is Admin
+    <input type="checkbox" [(ngModel)]="isAdmin">
+  </label>
+  <label>
+    Enable Redirect
+    <input type="checkbox" [(ngModel)]="enableRedirect">
+  </label>
+</div>
+<router-outlet></router-outlet>

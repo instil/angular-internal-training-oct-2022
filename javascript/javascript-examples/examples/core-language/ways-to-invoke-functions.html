@@ -1,0 +1,37 @@
+<div>
+    <script>
+        (function () {
+            const x = 12;
+            const y = 23;
+
+            const obj1 = {x: 34, y: 45};
+            const obj2 = {x: 56, y: 67};
+
+            function f1() {
+                if (this === undefined) {
+                    printResult("'this' is undefined");
+                    return;
+                }
+                printResult(`Values are:  ${this.x} and ${this.y}`);
+                this.z = (this.x + this.y) || 'Calculation failed...';
+            }
+
+            printTitle("Calling the function standalone:");
+            f1();
+
+            printTitle("Calling the function as a method:");
+            obj1.f2 = f1;
+            obj1.f2();
+            printResult(obj1.z);
+
+            printTitle("Calling the function via 'apply':");
+            f1.apply(obj2);
+            printResult(obj2.z);
+
+            printTitle("Calling the function as a constructor:");
+            const obj3 = new f1();
+            printResult(obj3.z);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,13 @@
+<p>
+  Below are the possible container values. They adjust how much space appears on the left and the right
+  when the window is different size.
+</p>
+<p>
+  Try different values and resize the window to see the effect. For example, 'container-fluid'
+  has no space at all window sizes.
+</p>
+
+<select [(ngModel)]="options.container">
+  <option *ngFor="let option of options.containerValues" [value]="option">{{option}}</option>
+</select>
+

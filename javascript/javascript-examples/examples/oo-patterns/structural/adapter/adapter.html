@@ -1,0 +1,78 @@
+<div>
+    <script>
+        (function () {
+            class Arithmetic {
+                constructor() {
+                    this.pi_value = 3.142;
+                }
+
+                add(lhs, rhs) {
+                    return lhs + rhs;
+                }
+
+                subtract(lhs, rhs) {
+                    return lhs - rhs;
+                }
+
+                multiply(lhs, rhs) {
+                    return lhs * rhs;
+                }
+
+                pi() {
+                    return this.pi_value;
+                }
+            }
+
+            class ArithmeticAdapter {
+                constructor(arithmetic) {
+                    this.arithmetic = arithmetic;
+                }
+
+                sum(lhs, rhs) {
+                    return this.arithmetic.add(lhs, rhs);
+                }
+
+                product(lhs, rhs) {
+                    return this.arithmetic.multiply(lhs, rhs);
+                }
+
+                difference(lhs, rhs) {
+                    return this.arithmetic.subtract(lhs, rhs);
+                }
+
+                pi() {
+                    return this.arithmetic.pi();
+                }
+            }
+
+            class ArithmeticAdapter2 {
+                constructor(arithmetic) {
+                    this.arithmetic = arithmetic;
+                    this.sum = this.arithmetic.add.bind(this.arithmetic);
+                    this.difference = this.arithmetic.subtract.bind(this.arithmetic);
+                    this.product = this.arithmetic.multiply.bind(this.arithmetic);
+                    this.pi = this.arithmetic.pi.bind(this.arithmetic);
+                }
+            }
+
+            const original = new Arithmetic();
+            const adapter1 = new ArithmeticAdapter(original);
+            const adapter2 = new ArithmeticAdapter2(original);
+
+            printTitle('The Adapter Pattern');
+
+            printTitle('Using Adapter 1');
+            printResult(`2 + 5 = ${adapter1.sum(2, 5)}`);
+            printResult(`4 * 7 = ${adapter1.product(4, 7)}`);
+            printResult(`12 - 8 = ${adapter1.difference(12, 8)}`);
+            printResult(`Pi = ${adapter1.pi()}`);
+
+            printTitle('Using Adapter 2');
+            printResult(`2 + 5 = ${adapter2.sum(2, 5)}`);
+            printResult(`4 * 7 = ${adapter2.product(4, 7)}`);
+            printResult(`12 - 8 = ${adapter2.difference(12, 8)}`);
+            printResult(`Pi = ${adapter2.pi()}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

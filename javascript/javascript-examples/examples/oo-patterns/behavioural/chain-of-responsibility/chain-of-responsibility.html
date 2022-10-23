@@ -1,0 +1,28 @@
+<div>
+    <script>
+        (function () {
+            function getClickHandler(title) {
+                return (e) => {
+                    printResult(`${title} click event on ${e.currentTarget.id}`);
+                }
+            }
+
+            for (let ii = 1; ii <= 3; ii++) {
+                let element = document.getElementById('Layer' + ii);
+                element.addEventListener('click', getClickHandler("Tunneling"), true);
+                element.addEventListener('click', getClickHandler("Bubbling"), false);
+                element.onclick = getClickHandler("Attribute");
+            }
+        })();
+    </script>
+    <div id="Layer1" style="background: lightblue; padding: 30px">
+        <h3>Layer 1</h3>
+        <div id="Layer2" style="background: lightgreen; padding: 30px">
+            <h3>Layer 2</h3>
+            <div id="Layer3" style="background: lightsalmon; padding: 30px">
+                <h3>Layer 3</h3>
+            </div>
+        </div>
+    </div>
+    <pre id="output"></pre>
+</div>

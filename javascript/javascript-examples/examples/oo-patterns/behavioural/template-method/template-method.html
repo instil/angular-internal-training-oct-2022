@@ -1,0 +1,66 @@
+<div>
+    <script>
+        (function () {
+            class Connection {
+                constructor(logger) {
+                    this.logger = logger;
+                }
+
+                sendMessage(data) {
+                    this.openConnection();
+                    this.sendData(data);
+                    this.closeConnection();
+                }
+            }
+
+            class HttpConnection extends Connection {
+                constructor(logger) {
+                    super(logger);
+                }
+
+                openConnection() {
+                    this.logger.log('HTTP', 'Opening connection');
+                }
+
+                sendData(data) {
+                    this.logger.log('HTTP', `Sending: ${data}`);
+                }
+
+                closeConnection() {
+                    this.logger.log('HTTP', `Closing connection`);
+                }
+            }
+
+            class SmtpConnection extends Connection {
+                constructor(logger) {
+                    super(logger);
+                }
+
+                openConnection() {
+                    this.logger.log('SMTP', 'Opening connection');
+                }
+
+                sendData(data) {
+                    this.logger.log('SMTP', `Sending: ${data}`);
+                }
+
+                closeConnection() {
+                    this.logger.log('SMTP', 'Closing connection');
+                }
+            }
+
+            const logger = {
+                log: function (category, message) {
+                    printTitle(category);
+                    printResult(message);
+                }
+            };
+            const httpConnection = new HttpConnection(logger);
+            const smtpConnection = new SmtpConnection(logger);
+
+            httpConnection.sendMessage('Sending first message');
+            smtpConnection.sendMessage('Sending second message');
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,29 @@
+<div>
+    <script>
+        (function () {
+            function saySomething(msg) {
+                printResult(`You said: ${msg}`);
+            }
+
+            function func(text, ...inputs) {
+                printResult(text[0]);
+                printResult(text[1]);
+                printResult(inputs[0]);
+                printResult(inputs[1]);
+            }
+
+            printTitle("Using Regular Template Literals");
+            saySomething("Hello World!");
+            saySomething(1 + 2);
+            saySomething(`${(2 + 6) / 2}`);
+            saySomething(`The meaning of life is ${6 * 7}`);
+
+            printTitle("Using Tagged Template Literals");
+            const no1 = 5;
+            const no2 = 6;
+            const no3 = 7;
+            func`Results are ${no1 + no2 + no3} and ${no1 * no2 * no3}`
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,51 @@
+<div>
+    <script>
+        (function () {
+            function removeVowels(text) {
+                const regex = /[aeiou]+/ig;
+
+                if(text.match(regex) !== null) {
+                    return Monet.Validation.Success(text.replaceAll(regex, ''));
+                }
+                return Monet.Validation.Fail('Text contains no vowels');
+            }
+
+            function removePunctuation(text) {
+                const regex = /[,-. ]+/g;
+
+                if(text.match(regex) !== null) {
+                    return Monet.Validation.Success(text.replaceAll(regex, ''));
+                }
+                return Monet.Validation.Fail('Text contains no punctuation');
+            }
+
+            function removeDigits(text) {
+                const regex = /\d+/g;
+
+                if(text.match(regex) !== null) {
+                    return Monet.Validation.Success(text.replaceAll(regex, ''));
+                }
+                return Monet.Validation.Fail('Text contains no digits');
+            }
+
+
+            function demo(text) {
+                const f = t1 => t2 => t3 => `'${text}' was '${t1}' without digits, '${t2}' without punctuation and '${t3}' without vowels`;
+
+                const v1 = removeVowels(text);
+                const v2 = removePunctuation(text);
+                const v3 = removeDigits(text);
+
+                return v1.ap(v2.ap(v3.map(f)));
+            }
+
+            printTitle('The Validated Monad');
+
+            printResult(demo('bcd'));
+            printResult(demo('abcd'));
+            printResult(demo('a,b.c d'));
+            printResult(demo('a,b.1 2'));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

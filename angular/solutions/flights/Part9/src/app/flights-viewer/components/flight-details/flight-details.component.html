@@ -1,0 +1,9 @@
+<div *ngIf="flight">
+  <span class="fa fa-times-circle" routerLink="/flights"></span>
+  <p>Flight Number: <span data-testid="id">{{flight.id}}</span></p>
+  <p>Flight Origin: <span data-testid="origin">{{flight.origin}}</span></p>
+  <p>Flight Departure Time: <span data-testid="departure">{{flight.departure | date}}</span></p>
+  <p>Flight Destination: <span data-testid="destination">{{flight.destination}}</span></p>
+  <p>Flight Arrival: <span data-testid="arrival">{{flight.arrival | date}}</span></p>
+  <button class="btn btn-primary" data-testid="edit-button" routerLink="edit">Edit</button>
+</div>

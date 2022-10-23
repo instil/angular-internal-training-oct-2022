@@ -1,0 +1,87 @@
+<div class="row">
+  <div class="col-auto">
+    <div>
+      Main Style
+      <select [(ngModel)]="style">
+        <option *ngFor="let style of styles" [value]="style">{{style}}</option>
+      </select>
+    </div>
+
+    <div>
+      Head Style
+      <select [(ngModel)]="headStyle">
+        <option *ngFor="let headStyle of headStyles" [value]="headStyle">{{headStyle}}</option>
+      </select>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div>
+      <input type="checkbox" [(ngModel)]="hover">
+      <code>table-hover</code>
+    </div>
+
+    <div>
+      <input type="checkbox" [(ngModel)]="striped">
+      <code>table-striped</code>
+    </div>
+
+    <div>
+      <input type="checkbox" [(ngModel)]="border">
+      <code>table-bordered</code>
+    </div>
+
+    <div>
+      <input type="checkbox" [(ngModel)]="borderless">
+      <code>table-borderless</code>
+    </div>
+    <div>
+      <input type="checkbox" [(ngModel)]="small">
+      <code>table-sm</code>
+    </div>
+  </div>
+  <div class="col-auto">
+    <div>
+      <input type="checkbox" [(ngModel)]="highlight">
+      Highlight some cells
+    </div>
+  </div>
+</div>
+
+<div>
+  <table class="table {{tableStyle}}"
+         [class.table-sm]="small"
+         [class.table-hover]="hover"
+         [class.table-striped]="striped"
+         [class.table-bordered]="border"
+         [class.table-borderless]="borderless">
+    <thead class="{{tableHeadStyle}}">
+    <tr>
+      <th>Heading 1</th>
+      <th>Heading 2</th>
+      <th>Heading 3</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+      <td>Data 1, 1</td>
+      <td>Data 1, 2</td>
+      <td [class.table-warning]="highlight">Data 1, 3</td>
+    </tr>
+    <tr>
+      <td [class.table-success]="highlight">Data 2, 1</td>
+      <td>Data 2, 2</td>
+      <td>Data 2, 3</td>
+    </tr>
+    <tr>
+      <td>Data 3, 1</td>
+      <td>Data 3, 2</td>
+      <td>Data 3, 3</td>
+    </tr>
+    <tr [class.table-danger]="highlight">
+      <td>Data 4, 1</td>
+      <td>Data 4, 2</td>
+      <td>Data 4, 3</td>
+    </tr>
+    </tbody>
+  </table>
+</div>

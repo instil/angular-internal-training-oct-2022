@@ -1,0 +1,27 @@
+<div class="{{options.container}}">
+  <h1>Layout and Design</h1>
+
+  <div class="row">
+    <aside class="bg-light col-3 mr-3">
+      <div style="position: sticky; top: 5px">
+        <h2><a href="https://getbootstrap.com/" target="_blank">Bootstrap</a></h2>
+        <ul>
+          <li *ngFor="let route of bootstrapRoutes">
+            <a routerLink="bootstrap/{{route.path}}">{{route.label}}</a>
+          </li>
+        </ul>
+
+        <h2><a href="https://material.angular.io/" target="_blank">Angular Material</a></h2>
+        <ul>
+          <li *ngFor="let route of materialRoutes">
+            <a routerLink="material/{{route.path}}">{{route.label}}</a>
+          </li>
+        </ul>
+      </div>
+    </aside>
+
+    <section class="col">
+      <router-outlet></router-outlet>
+    </section>
+  </div>
+</div>

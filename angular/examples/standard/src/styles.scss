@@ -1,0 +1,10 @@
+/* You can add global styles to this file, and also import other style files */
+
+// INTERESTING: Importing global SCSS
+@import "~bootstrap/scss/bootstrap";
+
+table {
+  @extend .table;
+  @extend .table-striped;
+  @extend .table-hover;
+}

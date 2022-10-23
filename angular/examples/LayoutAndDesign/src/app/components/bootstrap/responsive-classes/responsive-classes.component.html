@@ -1,0 +1,41 @@
+<app-show-size></app-show-size>
+
+<p>
+  Some of the classes have a size modifer. So the class only applies when the window is a certain size or
+  above.
+</p>
+Classes
+<ul class="-sm-">
+  <li>d - Display</li>
+  <li>p - Padding</li>
+  <li>m - Margin</li>
+  <li>text-left, text-center, text-right  - Text alignment</li>
+  <li>See also <a routerLink="/bootstrap/grid-responsive">Responive Grid Layout</a> </li>
+</ul>
+
+
+Sizes
+<ul>
+  <li>None (which equates to extra small)</li>
+  <li>sm</li>
+  <li>md</li>
+  <li>lg</li>
+  <li>xl</li>
+</ul>
+
+<h2>Display Elements</h2>
+<span class="d-none">Never appears</span>
+<span class="d-block">Always appears</span>
+<span class="d-none d-sm-block">Appears for small or larger</span>
+<span class="d-none d-md-block">Appears for medium or larger</span>
+<span class="d-none d-lg-block">Appears for large or larger</span>
+<span class="d-none d-xl-block">Appears for extra larger or larger</span>
+
+<h2>Margin and Padding</h2>
+In this example, as you shrink the window, the margin will decrease and the padding increase.
+
+<div class="outer">
+  <div class="inner m-0 m-sm-2 m-md-3 m-lg-4 m-xl-5 p-5 p-sm-4 p-md-3 p-lg-2 p-xl-0">
+    Content
+  </div>
+</div>

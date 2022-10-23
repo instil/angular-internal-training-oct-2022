@@ -1,0 +1,9 @@
+div {
+  background: #EEEEEE;
+  margin: 1em;
+}
+
+div > span {
+  font-size: 36pt;
+  float: right;
+}

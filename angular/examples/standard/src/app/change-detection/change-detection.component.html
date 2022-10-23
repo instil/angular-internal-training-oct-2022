@@ -1,0 +1,28 @@
+<p>
+  In the child value components, change detection is disabled.
+</p>
+<p>
+  Incrementing or decrementing the value in any component changes the shared
+  value but the view where the button was clicked updates.
+  Use refresh to manually check for changes in the other components.
+</p>
+<p>
+  Immutable data / reference changes will be detected so we're using an array
+  and modifying the value inside it.
+</p>
+
+<hr class="m-2">
+
+<app-value [value]="value"></app-value>
+
+<hr class="m-2">
+
+<app-value [value]="value"></app-value>
+
+<hr class="m-2">
+
+<app-value [value]="value"></app-value>
+
+<hr class="m-2">
+
+<app-value [value]="value"></app-value>

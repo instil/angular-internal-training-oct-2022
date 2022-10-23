@@ -1,0 +1,54 @@
+{
+    "extends": [
+        "plugin:@typescript-eslint/recommended",
+        "plugin:jest/recommended",
+        "plugin:jest/style"
+    ],
+    "plugins": [
+        "@typescript-eslint",
+        "jest"
+    ],
+    "env": {
+        "jest": true,
+        "es6": true,
+        "node": true
+    },
+    "rules": {
+        "no-multiple-empty-lines": [
+            "error",
+            {
+                "max": 2
+            }
+        ],
+        "no-console": "off",
+        "prefer-const": "warn",
+        "no-irregular-whitespace": "error",
+        "no-multi-spaces": "error",
+        "no-mixed-spaces-and-tabs": "error",
+        "no-trailing-spaces": "error",
+        "no-buffer-constructor": "error",
+        "@typescript-eslint/no-empty-function": "off",
+        "@typescript-eslint/no-inferrable-types": "off",
+        "@typescript-eslint/no-use-before-define": "off",
+        "@typescript-eslint/explicit-function-return-type": "off",
+        "@typescript-eslint/explicit-module-boundary-types": "off",
+        "semi": "error",
+        "object-curly-spacing": [
+            "error",
+            "never"
+        ],
+        "jest/no-jasmine-globals": "off",
+        "jest/prefer-to-be": "warn",
+        "jest/consistent-test-it": ["warn", {"fn": "it"}],
+        "jest/lowercase-name": ["off", { "ignoreTopLevelDescribe": true }],
+        "jest/prefer-hooks-on-top": "warn",
+        "jest/expect-expect": "off"  // disabled as some assertions are wrapped in functions
+    },
+    "globals": {
+        "BigInt": true,
+        "__dirname": false,
+        "process": false,
+        "module": false
+    },
+    "parser": "@typescript-eslint/parser"
+}

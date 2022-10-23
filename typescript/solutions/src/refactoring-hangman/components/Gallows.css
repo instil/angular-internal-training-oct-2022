@@ -1,0 +1,34 @@
+.gallows {
+  width: 200px;
+  height: 220px;
+  background-repeat: no-repeat;
+  background-size: 200px 200px;
+}
+
+.gallows-stage-0 {
+  background-image: url("../assets/stage0.png");
+}
+
+.gallows-stage-1 {
+  background-image: url("../assets/stage1.png");
+}
+
+.gallows-stage-2 {
+  background-image: url("../assets/stage2.png");
+}
+
+.gallows-stage-3 {
+  background-image: url("../assets/stage3.png");
+}
+
+.gallows-stage-4 {
+  background-image: url("../assets/stage4.png");
+}
+
+.gallows-stage-5 {
+  background-image: url("../assets/stage5.png");
+}
+
+.gallows-stage-6 {
+  background-image: url("../assets/stage6.png");
+}

@@ -1,0 +1,43 @@
+<div>
+    <script>
+        (function () {
+            //This example deliberately mirrors 'hoisting.html'
+            // Please review it first to understand why this
+            // version is better
+            printTitle('Block scope');
+
+            function demo() {
+                try {
+                    printResult(`C: ${myvar1}`);
+                } catch (e) {
+                    printResult(`C: Attempt to access 'myvar1' threw ${e.name}`)
+                }
+                printResult(`D: ${myvar2}`);
+
+                let myvar1 = "def";
+                printResult(`E: ${myvar1}`);
+                printResult(`F: ${myvar2}`);
+
+                if (1 < 2) {
+                    //When declared with 'let' or 'const' this
+                    // variable is unused
+                    let myvar2 = 456;
+                }
+                printResult(`G: ${myvar1}`);
+                printResult(`H: ${myvar2}`);
+            }
+
+            let myvar1 = "abc";
+            let myvar2 = 123;
+
+            printResult(`A: ${myvar1}`);
+            printResult(`B: ${myvar2}`);
+
+            demo();
+
+            printResult(`I: ${myvar1}`);
+            printResult(`J: ${myvar2}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

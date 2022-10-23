@@ -1,0 +1,40 @@
+<div>
+    <script>
+        (function () {
+            printTitle('Using Symbols');
+
+            class Person {
+                constructor(name, ...emails) {
+                    this.name = name;
+                    this.emails = emails;
+                    this[Symbol("hero name")] = "The Batman"
+                    this[Symbol("lair")] = "The Batcave"
+                }
+
+                [Symbol.iterator] = function* () {
+                    for (let email of this.emails) {
+                        yield email;
+                    }
+                };
+            }
+
+            const person = new Person(
+                "Bruce Wayne",
+                "bruce@waynetech.com", "lord@waynemanor.us", "b.wayne101@gmail.com");
+
+            printTitle("Iterating properties of person");
+            for (let prop in person) {
+                printResult(`  ${prop}`);
+            }
+            printTitle("Iterating contents of person");
+            for (let thing of person) {
+                printResult(`  ${thing}`);
+            }
+            printTitle("Iterating secrets of person");
+            for (let sym of Object.getOwnPropertySymbols(person)) {
+                printResult(`  ${sym.toString()}`);
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

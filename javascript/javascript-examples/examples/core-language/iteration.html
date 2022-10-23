@@ -1,0 +1,39 @@
+<div>
+    <script>
+        (function () {
+            let loopVar = 0;
+
+            printTitle("While Loop");
+            while (loopVar < 10) {
+                printResult(loopVar++);
+            }
+
+            printTitle("Do ... While Loop");
+            do {
+                printResult(loopVar--);
+            } while (loopVar > 0);
+
+            printTitle("For Loop");
+            for (let i = 0; i < 10; i++) {
+                printResult(i);
+            }
+
+            printTitle("For In Loop With Array");
+            const array = ["abc", "def", "ghi", "jkl", "mno"];
+            for (let i in array) {
+                printResult(`Box ${i} holds ${array[i]}`);
+            }
+
+            printTitle("For In Loop With Table / Object");
+            const table = {
+                prop1: "abc",
+                prop2: 123,
+                prop3: true
+            };
+            for (let p in table) {
+                printResult(`Property ${p} holds ${table[p]}`);
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

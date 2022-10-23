@@ -1,0 +1,60 @@
+<div>
+    <script>
+        (function () {
+            printTitle("The FP Toolkit");
+
+            const words = "This is a sentence that has been tokenized into words".split(' ');
+            printResult(`Original Words  : ${words}`);
+
+            printTitle("Operations Used Individually");
+
+            // filter - A subset of the original collection
+            const shortWords = words.filter(word => word.length < 5);
+            printResult(`Filter          : ${shortWords}`);
+
+            // map - transform each element in a collection into something else
+            const wordLengths = words.map(word => word.length)
+            printResult(`Map             : ${wordLengths}`);
+
+            // every - test if all elements in a collection satisfy some predicate/test/condition
+            const areAllWordsLong = words.every(word => word.length > 5);
+            printResult(`Every           : ${areAllWordsLong}`);
+
+            // some - test if any (or least 1) element satisfies a predicate
+            const anyLongWords = words.some(word => word.length > 5);
+            printResult(`Some            : ${anyLongWords}`);
+
+            // find - finds the first element to satisfy a predicate
+            const firstLongWord = words.find(word => word.length > 5);
+            printResult(`Find            : ${firstLongWord}`);
+
+            // Reduce - works towards a final result, one item at a time
+            const concatenatedString = words.reduce((previousResult, currentItem) => previousResult + currentItem);
+            printResult(`Reduce          : ${concatenatedString}`);
+
+            const totalLength = words.reduce((previousResult, currentItem) => previousResult + currentItem.length, 0);
+            printResult(`Reduce with seed: ${totalLength}`);
+
+            printTitle("Operations used in combination");
+
+            // Chaining methods
+            printResult('Chaining:');
+            words.filter(word => word.length < 5)
+                .map(word => word.length)
+                .forEach(item => printResult(`    ${item}`));
+
+            printResult('Mapping to nested data:');
+            words.map(word => word.split(''))
+                .forEach(array => {
+                   printResult('    New array:');
+                   array.forEach(item => printResult(`        ${item}`));
+                });
+
+            // flatMap - maps to a collection but flattens/concatenates the results
+            printResult('FlatMap:');
+            words.flatMap(word => word.split(''))
+                .forEach(item => printResult(`    ${item}`));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

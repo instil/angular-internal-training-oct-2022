@@ -1,0 +1,18 @@
+div {
+  background: antiquewhite;
+  border: black 2px double;
+  padding: 1em;
+
+  strong {
+    border-bottom: black 1px solid;
+    margin-bottom: 1em;
+    display: inline-block;
+  }
+}
+
+// INTERESTING: Styles in the parent will not affect the child unless annotated
+//              ::ng-deep - apply within all child HTML elements
+//              :host - still limit to this host (and its children with the ng-deep)
+:host ::ng-deep p {
+  background: yellow;
+}

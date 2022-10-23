@@ -1,0 +1,64 @@
+<div>
+    <script>
+        (function () {
+            function splitByCommas(text) {
+                if(!text.includes(",")) {
+                    return Monet.Maybe.None();
+                }
+                return Monet.Maybe.Some(text.split(","));
+            }
+
+            function removeVowels(text) {
+                if(text !== '') {
+                    const result = text.replaceAll(/[aeiou]+/ig, '');
+                    if(result !== '') {
+                        return Monet.Maybe.Some(result);
+                    }
+                }
+                return Monet.Maybe.None();
+            }
+
+            function firstOverThree(items) {
+                const result = items.find(str => str.length > 3);
+                return Monet.Maybe.fromUndefined(result);
+            }
+
+            function demo(text) {
+                return removeVowels(text)
+                    .flatMap(splitByCommas)
+                    .flatMap(firstOverThree)
+                    .map(str => `Found ${str}`)
+                    .orSome('No result found');
+            }
+
+            printTitle('The Maybe Monad');
+
+            const m1 = splitByCommas("abc");
+            const m2 = splitByCommas("abc,def");
+            const m3 = splitByCommas("abc,def,ghi");
+
+            printTitle("The 'orSome' method");
+
+            printResult(m1.orSome("No commas present"));
+            printResult(m2.orSome("No commas present"));
+            printResult(m3.orSome("No commas present"));
+
+            printTitle("The 'cata' method");
+
+            [m1, m2, m3].forEach( maybe => {
+               const f1 = () => printResult("No commas present");
+               const f2 = items => printResult(`Found ${items}`);
+
+               maybe.cata(f1, f2);
+            });
+
+            printTitle("Combining with 'flatMap'");
+
+            printResult(demo('abc'));
+            printResult(demo('abc,def,ghi'));
+            printResult(demo('abcde,fghij,klmno'));
+            printResult(demo('abcdef,ghijk,lmnopq'));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,33 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Using the 'instanceof' operator");
+
+            function printType(obj) {
+                if (obj instanceof RegExp) {
+                    printResult("Input is a RegExp object");
+                } else if (obj instanceof Array) {
+                    printResult("Input is an Array object");
+                } else if (obj instanceof Function) {
+                    printResult("Input is a Function object");
+                } else if (obj instanceof Date) {
+                    printResult("Input is a Date object");
+                } else if (obj instanceof Object) {
+                    printResult("Input is an unknown kind of object");
+                } else {
+                    printResult("Input is not an object");
+                }
+            }
+
+            printType(/abc/);
+            printType(new Date());
+            printType(function () {
+                return 1;
+            });
+            printType([1, 2, 3]);
+            printType({a: 123, b: "abc"});
+            printType(123);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

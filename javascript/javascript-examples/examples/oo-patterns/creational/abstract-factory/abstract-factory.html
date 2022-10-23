@@ -1,0 +1,123 @@
+<div>
+    <script>
+        (function () {
+            class TableList {
+                constructor() {
+                    this.table = document.createElement('table');
+                    this.table.setAttribute('class', 'table table-bordered table-striped');
+                    this.createHead();
+
+                    this.body = document.createElement('tbody');
+                    this.table.appendChild(this.body);
+                }
+
+                createHead() {
+                    this.head = document.createElement('thead');
+                    this.titleContainer = document.createElement('th');
+                    this.head.appendChild(this.titleContainer);
+                    this.table.appendChild(this.head);
+                }
+
+                setTitle(title) {
+                    this.titleContainer.appendChild(
+                        document.createTextNode(title));
+                }
+
+                addItem(item) {
+                    this.body.appendChild(item);
+                }
+
+                node() {
+                    return this.table;
+                }
+            }
+
+            function tableRow(content) {
+                let row = document.createElement('tr');
+                let data = document.createElement('td');
+                data.appendChild(document.createTextNode(content));
+                row.appendChild(data);
+                return row;
+            }
+
+            class TableListFactory {
+                createList() {
+                    return new TableList();
+                }
+
+                createItem(content) {
+                    return tableRow(content);
+                }
+            }
+
+            class UnorderedList {
+                constructor() {
+                    this.div = document.createElement('div');
+                    this.header = document.createElement('h2');
+                    this.table = document.createElement('ul');
+                    this.div.appendChild(this.header);
+                    this.div.appendChild(this.table);
+                }
+
+                setTitle(title) {
+                    this.header.appendChild(
+                        document.createTextNode(title));
+                }
+
+                addItem(item) {
+                    this.table.appendChild(item);
+                }
+
+                node() {
+                    return this.div;
+                }
+            }
+
+            function listItem(content) {
+                let data = document.createElement('li');
+                data.appendChild(document.createTextNode(content));
+                return data;
+            }
+
+            class UnorderedListFactory {
+                createList() {
+                    return new UnorderedList();
+                }
+
+                createItem(content) {
+                    return listItem(content);
+                }
+            }
+
+            class WebLanguageBuilder {
+                constructor(factory) {
+                    this.factory = factory;
+                }
+
+                build() {
+                    let list = this.factory.createList();
+                    list.setTitle('Web Languages');
+                    list.addItem(this.factory.createItem('JavaScript'));
+                    list.addItem(this.factory.createItem('TypeScript'));
+                    list.addItem(this.factory.createItem('CoffeeScript'));
+                    list.addItem(this.factory.createItem('Java'));
+                    list.addItem(this.factory.createItem('C#'));
+                    return list.node();
+                }
+            }
+
+            printTitle('Abstract Factory Pattern');
+
+            let webLanguageBuilder = new WebLanguageBuilder(new TableListFactory());
+            document.getElementById('table-output')
+                .appendChild(webLanguageBuilder.build());
+
+            webLanguageBuilder = new WebLanguageBuilder(new UnorderedListFactory());
+            document.getElementById('list-output')
+                .appendChild(webLanguageBuilder.build());
+        })();
+    </script>
+    <pre id="output"></pre>
+    <div id="table-output"></div>
+    <div id="list-output"></div>
+</div>

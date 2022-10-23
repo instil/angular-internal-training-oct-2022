@@ -1,0 +1,35 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Regular method calls");
+
+            const math = {
+                add(num1, num2) {
+                    return num1 + num2;
+                },
+
+                subtract(num1, num2) {
+                    return num1 - num2;
+                }
+            };
+            printResult(math.add(40, 2));
+            printResult(math.subtract(40, 2));
+
+            printTitle("Calls with the spread operator");
+
+            let numbers = [20, 2];
+            printResult(math.add(...numbers));
+            printResult(math.subtract(...numbers));
+
+            printTitle("A function with a rest parameter");
+
+            function multiplyAllBy(multiplier, ...values) {
+                return values.map(value => value * multiplier);
+            }
+
+            printResult(multiplyAllBy(2, 1, 3, 5, 7));
+            printResult(multiplyAllBy(10, 1, 3, 5, 7));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,48 @@
+<div>
+    <script>
+        (function () {
+            let instance = null;
+
+            class AuthenticationService {
+                constructor() {
+                    if (instance != null) {
+                        return instance;
+                    }
+                    instance = this;
+                    this.isLoggedIn = false;
+                    printResult('Creating Authentication Service');
+                }
+
+                login() {
+                    this.isLoggedIn = true;
+                }
+
+                logout() {
+                    this.isLoggedIn = false;
+                }
+
+                static getInstance() {
+                    if (instance == null) {
+                        instance = new AuthenticationService();
+                    }
+                    return instance;
+                }
+            }
+
+            class ConfigurationLoader {
+                load() {
+                    printResult('Loading configuration and logging in');
+                    printResult(`Is Logged in: ${AuthenticationService.getInstance().isLoggedIn}`);
+                    // ...
+                    AuthenticationService.getInstance().login();
+                }
+            }
+
+            printTitle("Singleton Pattern");
+
+            new ConfigurationLoader().load();
+            printResult(`Is Logged in: ${new AuthenticationService().isLoggedIn}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

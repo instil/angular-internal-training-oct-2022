@@ -1,0 +1,47 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Declaring functions");
+
+            // We can access the function declared below
+            //  because it is a named function
+            printResult("A:" + add(12, 8));
+
+            function add(p1, p2) {
+                return p1 + p2;
+            }
+
+            // The call below would fail because subtract is an anonymous
+            //  function assigned to a variable
+            // printResult("B:" + subtract(12, 8));
+
+            const subtract = function (p1, p2) {
+                return p1 - p2;
+            };
+
+            // It is possible for an anonymous function to have a name
+            //  This is only to enable the creation of anonymous functions
+            //  whose implementation needs to be recursive
+            const productOfAllNumbersLessThanOrEqualToNumber = function factorial(num) {
+                if (num === 1) {
+                    return 1;
+                }
+                return num * factorial(num - 1);
+            };
+
+            printResult("C:" + subtract(12, 8));
+            printResult("D:" + productOfAllNumbersLessThanOrEqualToNumber(5));
+
+            // Here we prove that the name 'factorial' cannot be used
+            try {
+                printResult("E:" + factorial(5));
+            } catch (error) {
+                printResult("E: symbol 'factorial' not in scope...");
+            }
+
+            // However the name of the function can still be discovered
+            printResult(productOfAllNumbersLessThanOrEqualToNumber.name);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

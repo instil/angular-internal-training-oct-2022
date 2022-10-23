@@ -1,0 +1,70 @@
+<div>
+    <script>
+        (function () {
+            class List {
+                constructor(list) {
+                    this.list = list;
+                }
+
+                add(...items) {
+                    items.forEach(x => this.list.push(x));
+                }
+
+                values() {
+                    return this.list.values();
+                }
+            }
+
+            class FilteredList {
+                constructor(list, predicate) {
+                    this.list = list;
+                    this.predicate = predicate;
+                }
+
+                addItemsFiltered(...items) {
+                    items.forEach(item => {
+                        if (this.predicate(item)) {
+                            this.list.add(item);
+                        }
+                    });
+                }
+
+                add(...items) {
+                    this.addItemsFiltered(...items);
+                }
+
+                values() {
+                    return this.list.values();
+                }
+            }
+
+            function outputArray(list) {
+                const values = list.values();
+                for (let value of values) {
+                    printResult(`  ${value}`);
+                }
+            }
+
+            const originalList1 = new List([1, 2, 3, 4, 5, 6]);
+            const originalList2 = new List([1, 2, 3, 4, 5, 6]);
+            const decoratedList1 = new FilteredList(originalList1, x => x % 2 === 0);
+            const decoratedList2 = new FilteredList(originalList2, x => x % 2 !== 0);
+
+            printTitle(`First FilteredList before additions:`);
+            outputArray(decoratedList1);
+
+            printTitle(`Second FilteredList before additions:`);
+            outputArray(decoratedList2);
+
+            decoratedList1.add(13, 14, 15, 16);
+            decoratedList2.add(13, 14, 15, 16);
+
+            printTitle(`First FilteredList after additions:`);
+            outputArray(decoratedList1);
+
+            printTitle(`Second FilteredList after additions:`);
+            outputArray(decoratedList2);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

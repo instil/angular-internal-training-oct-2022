@@ -1,0 +1,11 @@
+<h3>See console for subscription outputs</h3>
+
+<hr>
+
+<ul>
+  <!--  INTERESTING: The values come from an Observable which we pipe through an async pipe -->
+  <li>Counter: {{counter | async}}<p>
+  <li>Subject: {{subject | async}}<p>
+  <li>Behaviour: {{behaviorSubject | async}}<p>
+  <li>Replay: {{replaySubject | async}}<p>
+</ul>

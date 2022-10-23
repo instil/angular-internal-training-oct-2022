@@ -1,0 +1,168 @@
+<div>
+    <script>
+        (function () {
+            class Calculator {
+                constructor() {
+                    this.value = 34;
+                }
+
+                add(value) {
+                    this.value = this.value + value;
+                }
+
+                subtract(value) {
+                    this.value -= value;
+                }
+
+                multiply(value) {
+                    this.value *= value;
+                }
+
+                divide(value) {
+                    this.value /= value;
+                }
+            }
+
+            function updateResult() {
+                document.getElementById('result').innerHTML = calculator.value;
+            }
+
+            class UndoManager {
+                constructor() {
+                    this.undoCommands = [];
+                }
+
+                addUndo(undoCommand) {
+                    this.undoCommands.push(undoCommand);
+                }
+
+                undo() {
+                    console.log("Undoing last command");
+                    if (this.undoCommands.length > 0) {
+                        const undoCommand = this.undoCommands.pop();
+                        undoCommand.undo();
+                        updateResult();
+                    }
+                }
+            }
+
+            class CalculatorCommand {
+                constructor(calculator, undoManager) {
+                    this.calculator = calculator;
+                    this.undoManager = undoManager;
+                }
+            }
+
+            class AddCommand extends CalculatorCommand {
+                constructor(calculator, undoManager, previousValue) {
+                    super(calculator, undoManager);
+                    this.previousValue = previousValue;
+                }
+
+                execute(value) {
+                    this.calculator.add(value);
+                    this.undoManager.addUndo(new AddCommand(this.calculator, this.undoManager, value));
+                }
+
+                undo() {
+                    this.calculator.subtract(this.previousValue);
+                }
+            }
+
+            class SubtractCommand extends CalculatorCommand {
+                constructor(calculator, undoManager, previousValue) {
+                    super(calculator, undoManager);
+                    this.previousValue = previousValue;
+                }
+
+                execute(value) {
+                    this.calculator.subtract(value);
+                    this.undoManager.addUndo(new SubtractCommand(this.calculator, this.undoManager, value));
+                }
+
+                undo() {
+                    this.calculator.add(this.previousValue);
+                }
+            }
+
+            class MultiplyCommand extends CalculatorCommand {
+                constructor(calculator, undoManager, previousValue) {
+                    super(calculator, undoManager);
+                    this.previousValue = previousValue;
+                }
+
+                execute(value) {
+                    this.calculator.multiply(value);
+                    this.undoManager.addUndo(new MultiplyCommand(this.calculator, this.undoManager, value));
+                }
+
+                undo() {
+                    this.calculator.divide(this.previousValue);
+                }
+            }
+
+            class DivideCommand extends CalculatorCommand {
+                constructor(calculator, undoManager, previousValue) {
+                    super(calculator, undoManager);
+                    this.previousValue = previousValue;
+                }
+
+                execute(value) {
+                    this.calculator.divide(value);
+                    this.undoManager.addUndo(new DivideCommand(this.calculator, this.undoManager, value));
+                }
+
+                undo() {
+                    this.calculator.multiply(this.previousValue);
+                }
+            }
+
+            function buildCommandsMap(calculator, undoManager) {
+                const commands = new Map();
+                commands.set("add", new AddCommand(calculator, undoManager, 0));
+                commands.set("subtract", new SubtractCommand(calculator, undoManager, 0));
+                commands.set("multiply", new MultiplyCommand(calculator, undoManager, 1));
+                commands.set("divide", new DivideCommand(calculator, undoManager, 1));
+                return commands;
+            }
+
+            function universalHandler(event) {
+                console.log(`Handler called for ${event.target.id}`);
+
+                const getValue = () => parseFloat(document.getElementById('value').value);
+                const handler = commands.get(event.target.id);
+                handler.execute(getValue());
+                updateResult();
+            }
+
+            const calculator = new Calculator();
+            const undoManager = new UndoManager();
+            const commands = buildCommandsMap(calculator, undoManager);
+
+            document.getElementById('undo').addEventListener('click', () => undoManager.undo());
+            for (let key of commands.keys()) {
+                console.log(`Adding handler for ${key}`);
+                document.getElementById(key).addEventListener('click', universalHandler);
+            }
+        })();
+    </script>
+    <h2>The Command Pattern</h2>
+    <div class="container">
+        <form class="form mb-5">
+            <div>
+                <label>Value</label>
+                <input id="value" type="number" value="2">
+            </div>
+            <div class="mt-2 mb-2 row">
+                <input class="btn btn-primary col-2 mr-2" id="add" type="button" value="Add">
+                <input class="btn btn-primary col-2 mr-2" id='subtract' type="button" value="Subtract">
+                <input class="btn btn-primary col-2 mr-2" id='multiply' type="button" value="Multiply">
+                <input class="btn btn-primary col-2 mr-2" id='divide' type="button" value="Divide">
+            </div>
+            <div class="row">
+                <input class="btn btn-danger col-2 mr-2" id='undo' type="button" value="Undo">
+            </div>
+        </form>
+        <h1>Result <span id="result"></span></h1>
+    </div>
+</div>

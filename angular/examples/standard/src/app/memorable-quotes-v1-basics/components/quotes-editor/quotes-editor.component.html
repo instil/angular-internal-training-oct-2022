@@ -1,0 +1,37 @@
+<h1>Quotes App</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Author</th>
+    <th>Quote</th>
+  </tr>
+  </thead>
+  <tbody>
+
+  <!-- INTERESTING: *ngFor allows elements to be repeated -->
+  <!-- INTERESTING: The app-quotes-row is done as an attribute component -->
+  <tr *ngFor="let quote of quotations" app-quotes-row
+      [text]="quote.text" [source]="quote.source"></tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<form name="quotesForm">
+  <div>
+    <label>
+      Quote text:
+      <!--  INTERESTING: Two-way binding [()] used for ngModel -->
+      <input type="text" size="60" name="newText" [(ngModel)]="newText"/>
+    </label>
+  </div>
+  <div>
+    <label>Quote origin:
+      <input type="text" size="20" name="newSource" [(ngModel)]="newSource"/>
+    </label>
+  </div>
+  <div>
+    <!--  INTERESTING: Output binding () used for click events -->
+    <input value="Add Quotation" type="button" (click)="addQuotation()"/>
+  </div>
+</form>

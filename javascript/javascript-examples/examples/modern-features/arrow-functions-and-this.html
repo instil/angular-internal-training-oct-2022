@@ -1,0 +1,69 @@
+<div>
+    <script>
+        (function () {
+            class Employee  {
+                constructor(name, jobTitle, dayRate) {
+                    this.name = name;
+                    this.jobTitle = jobTitle;
+                    this.dayRate = dayRate;
+                    this.salaryForWeeks = weeks => this.dayRate * 7 * weeks;
+                }
+
+                toString() {
+                    return `${this.name} - ${this.jobTitle}`;
+                }
+
+                salaryForDays(days) {
+                    return this.dayRate * days;
+                }
+            }
+
+            Employee.prototype.salaryForMonths = function (months) {
+                return this.dayRate * 30 * months;
+            };
+
+            Employee.prototype.salaryForYears = years => this.dayRate * 365 * years
+
+            const staffMember = new Employee("John Smith", "Assistant Bottle Washer", 100);
+
+            printTitle(`Direct calculations for: ${staffMember}`);
+
+            printResult(`${staffMember.salaryForDays(10)} days`);
+            printResult(`${staffMember.salaryForWeeks(10)} weeks`);
+            printResult(`${staffMember.salaryForMonths(10)} months`);
+            printResult(`${staffMember.salaryForYears(10)} years`);
+
+            printTitle(`Indirect calculations for: ${staffMember}`);
+
+            const f1 = staffMember.salaryForDays;
+            const f2 = staffMember.salaryForWeeks;
+            const f3 = staffMember.salaryForMonths;
+            const f4 = staffMember.salaryForYears;
+
+            try {
+                printResult(`${f1(10)} days`);
+            } catch (e) {
+                printResult('Indirect call to salaryForDays failed');
+            }
+
+            try {
+                printResult(`${f2(10)} weeks`);
+            } catch (e) {
+                printResult('Indirect call to salaryForWeeks failed');
+            }
+
+            try {
+                printResult(`${f3(10)} months`);
+            } catch (e) {
+                printResult('Indirect call to salaryForMonths failed');
+            }
+
+            try {
+                printResult(`${f4(10)} years`);
+            } catch (e) {
+                printResult('Indirect call to salaryForYears failed');
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

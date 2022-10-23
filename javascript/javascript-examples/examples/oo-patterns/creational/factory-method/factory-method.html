@@ -1,0 +1,43 @@
+<div>
+    <script>
+        (function () {
+            class Employee {
+                makePayment(amount) {
+                    let paymentMethod = this.createPaymentMethod();
+                    paymentMethod.credit(amount);
+                }
+            }
+
+            class PartTimeEmployee extends Employee {
+                createPaymentMethod() {
+                    return new Cheque();
+                }
+            }
+
+            class FullTimeEmployee extends Employee {
+                createPaymentMethod() {
+                    return new BankTransfer();
+                }
+            }
+
+            class Cheque {
+                credit(amount) {
+                    printResult(`Paying £${amount} via Cheque`);
+                }
+            }
+
+            class BankTransfer {
+                credit(amount) {
+                    printResult(`Paying £${amount} via Bank Transfer`);
+                }
+            }
+
+            const partTimer = new PartTimeEmployee();
+            const fullTimer = new FullTimeEmployee();
+
+            partTimer.makePayment(1000);
+            fullTimer.makePayment(500);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

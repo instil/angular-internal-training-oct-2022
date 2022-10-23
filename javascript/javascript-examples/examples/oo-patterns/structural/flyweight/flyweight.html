@@ -1,0 +1,73 @@
+<div>
+    <script>
+        (function () {
+            class Thickness {
+                constructor(left, right, top, bottom) {
+                    this.getLeft = () => left;
+                    this.getRight = () => right;
+                    this.getTop = () => top;
+                    this.getBottom = () => bottom;
+                }
+            }
+
+            //NB Class would not work here, as the
+            // prototype of a class cannot be modified
+            function TextBoxShared() {
+            }
+
+            TextBoxShared.prototype = {
+                text: '',
+                alignment: 'left',
+                backgroundColor: 'black',
+                foregroundColor: 'white',
+                borderColor: 'black',
+                height: 32,
+                width: 64,
+                margin: new Thickness(0, 0, 0, 0),
+                padding: new Thickness(0, 0, 0, 0),
+            };
+
+            class TextBox {
+                constructor() {
+                    this.text = '';
+                    this.alignment = 'left';
+                    this.backgroundColor = 'black';
+                    this.foregroundColor = 'white';
+                    this.borderColor = 'black';
+                    this.height = 32;
+                    this.wdith = 64;
+                    this.margin = new Thickness(0, 0, 0, 0);
+                    this.padding = new Thickness(0, 0, 0, 0);
+                }
+            }
+
+            const boxCount = 10000;
+
+            let boxes = [];
+            printTitle(`Creating ${boxCount} text boxes`);
+            for (let ii = 0; ii < boxCount; ii++) {
+                let textBox = new TextBox();
+                textBox.width = ii / 2;
+                boxes.push(textBox);
+            }
+
+            printResult(`TextBox[123] has border color ${boxes[123].borderColor}`);
+            printResult(`TextBox[123] has width ${boxes[123].width}`);
+
+
+            let boxesShared = [];
+            printTitle(`Creating ${boxCount} shared text boxes`);
+            for (let ii = 0; ii < boxCount; ii++) {
+                let textBox = new TextBoxShared();
+                textBox.width = ii / 2;
+                boxesShared.push(textBox);
+            }
+
+            console.log(boxesShared[123]);
+
+            printResult(`TextBox[123] has border color ${boxesShared[123].borderColor}`);
+            printResult(`TextBox[123] has width ${boxesShared[123].width}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

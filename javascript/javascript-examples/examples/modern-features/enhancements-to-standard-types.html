@@ -1,0 +1,59 @@
+<div>
+    <script>
+        (function () {
+            printTitle('String.prototype.includes - ES2015');
+            const sentence = "This is a great sentence";
+            printResult(`Is '${sentence}' a great sentence?`);
+            printResult(sentence.includes("great"));
+
+            printResult("Is 'includes' case insensitive?");
+            printResult(sentence.includes("GREAT"));
+
+            printTitle('Array.prototype.includes - ES2016');
+            const numbers = [1, 3, 5, 8, 13, 21];
+            printResult("Does Fibonacci contain 20?");
+            printResult(numbers.includes(21));
+
+            const complex = [{value: 1}, {value: 2}];
+            printResult("Can 'include' find complex objects?");
+            printResult(complex.includes({value: 2}));
+
+            printResult("Ah, so it only finds by reference?");
+            printResult(complex.includes(complex[1]));
+
+            printTitle('String padding');
+            let message = "JavaScript is great";
+            printResult(message.padStart(31));
+            printResult(message.padStart(31, "="));
+            printResult(message.padStart(25, "*-").padEnd(31, "-*"));
+
+            printTitle('Exponentiation - ES2016');
+            printResult(`2 to the power of 32 is ${2 ** 31}`);
+
+            printTitle('Object Methods');
+            class Named {
+                constructor(name) {
+                    this.name = name;
+                }
+            }
+
+            class Point extends Named {
+                constructor(x, y) {
+                    super("Point");
+                    this.x = x;
+                    this.y = y;
+                }
+
+                magnitude() {
+                    return sqrt(x ** 2 + y ** 2);
+                }
+            }
+
+            const p1 = new Point(3, 4);
+            printResult(Object.keys(p1));
+            printResult(Object.values(p1));
+            printResult(Object.entries(p1));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

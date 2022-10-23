@@ -1,0 +1,30 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Nested functions");
+
+            function collatzSequence(value) {
+                // Function declarations can be nested
+                function isEven() {
+                    // We have access to parent scope variable
+                    return value % 2 === 0;
+                }
+                // Arrows can be a neater alternative to nested functions
+                const next = () => isEven() ? nextEven() : nextOdd();
+                const nextEven = () => Math.floor(value / 2);
+                const nextOdd = () => (value * 3) + 1;
+                const isFinished = () => value === 1;
+
+                printResult(`Collatz Sequence for ${value}:`)
+                do {
+                    printResult(`   ${value}`);
+                    value = next();
+                } while(!isFinished());
+            }
+
+            collatzSequence(3);
+            collatzSequence(64);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

@@ -1,0 +1,11 @@
+
+div div:not(.w-100)  {
+  border: solid 1px white;
+  background: pink;
+  text-align: center;
+  padding: 10px 0;
+}
+
+h4 {
+  margin-top: 1em;
+}

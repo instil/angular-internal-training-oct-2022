@@ -1,0 +1,62 @@
+<div>
+    <script>
+        (async function () {
+            async function simplePromise() {
+                printTitle('Simple promises');
+                let promise = new Promise((resolve, reject) => {
+                    printResult("DEBUG: About to start really long calculation");
+                    setTimeout(() => resolve(42), 5000);
+                    printResult("DEBUG: I'll get the answer back to you soon");
+                });
+                promise.then(val => printResult(`RESULT A: Really long calculation returned ${val}`));
+                return promise
+            }
+
+            async function promisesAsReturnValues() {
+                printTitle('Returning a promise from a function');
+
+                function fetchThatThing() {
+                    printResult("DEBUG: Let me fetch that thing for you");
+                    const promise = new Promise((resolve, reject) => {
+                        setTimeout(() => resolve("ThatThing"), 1000);
+                    });
+                    printResult("DEBUG: I'll let you know when I have it");
+                    return promise;
+                }
+
+                fetchThatThing().then((thing) => printResult(`RESULT B: I got ${thing}`));
+            }
+
+            async function failingPromises() {
+                printTitle('A promise that fails');
+                const failingPromise = new Promise((resolve, reject) => reject("Earth has been demolished."));
+                return failingPromise
+                    .then(() => printResult("RESULT C: this will not be called"))
+                    .catch(reason => printResult(`FAIL C: ${reason}`));
+            }
+
+            async function listsOfPromises() {
+                printTitle('A list of promises');
+                const promise1 = Promise.resolve(42);
+                const promise2 = "so long";
+                const promise3 = new Promise((resolve, reject) => setTimeout(() => resolve("and thanks for all the fish"), 3000));
+
+                return Promise.all([promise1, promise2, promise3]).then(values => printResult("RESULT D: " + values));
+            }
+
+            async function promiseRace() {
+                printTitle('A promise race');
+                const promise4 = new Promise((resolve, reject) => setTimeout(() => resolve("RESULT E: Promise 4 is TOO SLOW"), 500));
+                const promise5 = new Promise((resolve, reject) => setTimeout(() => resolve("RESULT E: Promise 5 WINS !!"), 200));
+                Promise.race([promise4, promise5]).then((winner) => printResult(winner));
+            }
+
+            await simplePromise();
+            await promisesAsReturnValues();
+            await failingPromises();
+            await listsOfPromises();
+            await promiseRace()
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

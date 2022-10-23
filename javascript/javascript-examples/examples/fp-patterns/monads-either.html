@@ -1,0 +1,67 @@
+<div>
+    <script>
+        (function () {
+            function splitByCommas(text) {
+                if(!text.includes(",")) {
+                    return Monet.Either.Left(`${text} has no commas`);
+                }
+                return Monet.Either.Right(text.split(","));
+            }
+
+            function removeVowels(text) {
+                if(text !== '') {
+                    const result = text.replaceAll(/[aeiou]+/ig, '');
+                    if(result !== '') {
+                        return Monet.Either.Right(result);
+                    }
+                }
+                return Monet.Either.Left('default');
+            }
+
+            function convert(text) {
+                const result = parseFloat(text);
+                if(isNaN(result)) {
+                    throw new Error(`Can't covert ${text}`);
+                }
+                return result;
+            }
+
+            function firstAsNumber(items) {
+                return Monet.Either.fromTry(() => convert(items[0]));
+            }
+
+            function demo(text) {
+                return removeVowels(text)
+                    .flatMap(splitByCommas)
+                    .flatMap(firstAsNumber)
+                    .map(num => `Found ${num}`)
+                    .leftMap(thing => {
+                        let reason = thing instanceof Error ? thing.message : thing;
+                        return `Hit a snag: '${reason}'`
+                    });
+            }
+
+            printTitle('The Either Monad');
+
+            const e1 = splitByCommas("abc");
+            const e2 = splitByCommas("abc,def");
+            const e3 = splitByCommas("abc,def,ghi");
+
+            printTitle("The 'cata' method");
+
+            [e1, e2, e3].forEach( either => {
+               const f1 = text => printResult(`Failed to split up ${text}`);
+               const f2 = items => printResult(`Found ${items}`);
+
+                either.cata(f1, f2);
+            });
+
+            printTitle("Combining with 'flatMap'");
+
+            printResult(demo('abc'));
+            printResult(demo('abc,def,ghi'));
+            printResult(demo('a12,b34,e56'));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

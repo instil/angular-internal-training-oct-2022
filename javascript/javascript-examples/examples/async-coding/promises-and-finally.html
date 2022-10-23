@@ -1,0 +1,38 @@
+<div>
+    <script>
+        (function () {
+            let doAfterDelay = function (message, delay) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(() => {
+                        printResult(message);
+                        resolve(message);
+                    }, delay);
+                });
+            };
+
+            function example1WithSuccess() {
+                return doAfterDelay("Example 1 Begin", 1000)
+                    .then(() => doAfterDelay("Example 1 Ends", 1000));
+            }
+
+            function example2WithFail() {
+                return doAfterDelay("Example 2 Begin", 5000)
+                    .then(() => doAfterDelay("Example 2 about to fail ", 1000))
+                    .then(() => Promise.reject("Failing Example 2"))
+                    .then(() => doAfterDelay("Example 2 never gets here", 1000));
+            }
+
+            example1WithSuccess()
+                .then(() => printResult("Successfully completed example 1"))
+                .catch(err => printResult(`Something went wrong: ${err}`))
+                .finally(() => printResult('This will happen either way'));
+
+            example2WithFail()
+                .then(() => printResult("Successfully completed example 2"))
+                .catch(err => printResult(`Something went wrong: ${err}`))
+                .finally(() => printResult('This will happen either way'))
+                .then(() => printResult("Catch returns a promise so can continue chaining"));
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

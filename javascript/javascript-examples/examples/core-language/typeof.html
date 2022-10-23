@@ -1,0 +1,27 @@
+<div>
+    <script>
+        (function () {
+            printTitle("The 'typeof' operator");
+
+            const myvar1 = 123;
+            const myvar2 = "abc";
+            const myvar3 = false;
+            const myvar4 = function () {
+                return 4;
+            };
+
+            const myvar5 = {a: 123, b: 456};
+            const myvar6 = undefined;
+            const myvar7 = null;
+
+            printResult(`myvar1 is a ${typeof myvar1} with value ${myvar1}`);
+            printResult(`myvar2 is a ${typeof myvar2} with value ${myvar2}`);
+            printResult(`myvar3 is a ${typeof myvar3} with value ${myvar3}`);
+            printResult(`myvar4 is a ${typeof myvar4} with value ${myvar4}`);
+            printResult(`myvar5 is a ${typeof myvar5} with value ${myvar5}`);
+            printResult(`myvar6 is a ${typeof myvar6} with value ${myvar6}`);
+            printResult(`myvar7 is a ${typeof myvar7} with value ${myvar7}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

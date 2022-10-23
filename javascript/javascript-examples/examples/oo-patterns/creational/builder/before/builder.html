@@ -1,0 +1,84 @@
+<div>
+    <script>
+        (function () {
+            function createTitle(title) {
+                let titleContainer = document.createElement('h2');
+                titleContainer.appendChild(
+                    document.createTextNode(title)
+                );
+                return titleContainer;
+            }
+
+            function createTableHeader(title) {
+                let titleContainer = document.createElement('th');
+                titleContainer.appendChild(
+                    document.createTextNode(title)
+                );
+                return titleContainer;
+            }
+
+            function createHead(headers) {
+                let head = document.createElement('thead');
+                headers.map(createTableHeader)
+                    .forEach(x => head.appendChild(x));
+                return head;
+            }
+
+            function createTableData(data) {
+                let dataContainer = document.createElement('td');
+                dataContainer.appendChild(
+                    document.createTextNode(data)
+                );
+                return dataContainer;
+            }
+
+            function createTableRow(data) {
+                let row = document.createElement('tr');
+                data.map(createTableData)
+                    .forEach(x => row.appendChild(x));
+                return row;
+            }
+
+            function createBody(rows) {
+                let body = document.createElement('tbody');
+                rows.map(createTableRow)
+                    .forEach(x => body.appendChild(x));
+                return body;
+            }
+
+            function buildTable(data) {
+                let div = document.createElement('div');
+                if (data.title) {
+                    div.appendChild(createTitle(data.title));
+                }
+
+                let table = document.createElement('table');
+                table.className = 'table';
+                if (data.headers && data.headers.length > 0) {
+                    table.appendChild(createHead(data.headers));
+                }
+                if (data.rows && data.rows.length > 0) {
+                    table.appendChild(createBody(data.rows));
+                }
+
+                div.appendChild(table);
+                return div;
+            }
+
+            const table = buildTable({
+                title: 'Cool Movies',
+                headers: ['Id', 'Title', 'Genres'],
+                rows: [
+                    [1, 'Predator', 'Action, Sci-Fi'],
+                    [2, 'Hero', 'Action, Martial Arts'],
+                    [3, 'Fallen', 'Thriller'],
+                ],
+            });
+
+            printTitle('Builder Pattern - Before');
+            document.getElementById("table-output").appendChild(table);
+        })();
+    </script>
+    <pre id="output"></pre>
+    <div id="table-output"></div>
+</div>

@@ -1,0 +1,52 @@
+<h2>Text</h2>
+<mat-form-field>
+  <mat-label>Simple Text Field</mat-label>
+  <input type="text" matInput placeholder="Enter some text" [(ngModel)]="textValue">
+</mat-form-field>
+<div>Bound Data: {{textValue}}</div>
+
+<hr>
+<h2>Password</h2>
+
+<mat-form-field>
+  <mat-label>Password Field</mat-label>
+  <input type="password" matInput placeholder="Enter a password" [(ngModel)]="passwordValue">
+</mat-form-field>
+<div>Bound Data: {{passwordValue}}</div>
+
+<hr>
+<h2>Number</h2>
+
+<mat-form-field>
+  <mat-label>Simple Number Field</mat-label>
+  <input type="number" matInput placeholder="Enter a number" [(ngModel)]="numberValue">
+</mat-form-field>
+<div>Bound Data: {{numberValue}}</div>
+
+<hr>
+<h2>Eamil</h2>
+
+<mat-form-field>
+  <mat-label>Email Field</mat-label>
+  <input type="email" matInput placeholder="Enter an email" [(ngModel)]="emailValue">
+</mat-form-field>
+<div>Bound Data: {{emailValue}}</div>
+
+<hr>
+<h2>Date</h2>
+
+<mat-form-field>
+  <mat-label>Date Field</mat-label>
+  <input type="date" matInput placeholder="Select a date" [(ngModel)]="dateValueAsString">
+</mat-form-field>
+<div>Bound Data: {{dateValue.toLocaleDateString()}}</div>
+
+<hr>
+<h2>Date Time</h2>
+
+<mat-form-field>
+  <mat-label>Date Time Field</mat-label>
+  <input type="datetime-local" matInput placeholder="Select a date" [(ngModel)]="dateTimeValueAsString">
+</mat-form-field>
+<div>Bound Data: {{dateValue.toLocaleString()}}</div>
+

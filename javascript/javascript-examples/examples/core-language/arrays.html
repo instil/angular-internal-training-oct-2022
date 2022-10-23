@@ -1,0 +1,29 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Create Empty array via constructor")
+            const array1 = new Array();
+            array1[0] = "abc";
+            array1[1] = 123;
+            array1[2] = "def";
+            printResult(array1);
+
+
+            printTitle("Create Empty array via []")
+            const array2 = [];
+            array2[0] = "abc";
+            array2[1] = 123;
+            array2[2] = "def";
+            printResult(array2);
+
+            printTitle("Create Populated Array via constructor")
+            const array3 = new Array("abc", 123, "def", 456, "ghi", 789);
+            printResult(array3);
+
+            printTitle("Create Populated Array via []]")
+            const array4 = ["abc", 123, "def", 456, "ghi", 789];
+            printResult(array4);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

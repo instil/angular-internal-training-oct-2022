@@ -1,0 +1,7 @@
+<td data-testid="id">{{flight.id}}</td>
+<td data-testid="origin">{{flight.origin}}</td>
+<td data-testid="departure">{{flight.departure | date}}</td>
+<td data-testid="destination">{{flight.destination}}</td>
+<td data-testid="arrival">{{flight.arrival | date}}</td>
+<td><button [disabled]="isBusy" class="btn btn-primary" data-testid="select-button" [routerLink]="flight.id.toString()">Select</button></td>
+<td><button [disabled]="isBusy" class="btn btn-danger" (click)="deleteFlight()">Delete</button></td>

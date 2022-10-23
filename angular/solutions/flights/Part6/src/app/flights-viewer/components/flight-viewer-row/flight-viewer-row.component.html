@@ -1,0 +1,7 @@
+<td>{{flight.id}}</td>
+<td>{{flight.origin}}</td>
+<td>{{flight.departure | date}}</td>
+<td>{{flight.destination}}</td>
+<td>{{flight.arrival | date}}</td>
+<td><button [disabled]="isBusy" class="btn btn-primary" [routerLink]="flight.id.toString()">Select</button></td>
+<td><button [disabled]="isBusy" class="btn btn-danger" (click)="deleteFlight()">Delete</button></td>

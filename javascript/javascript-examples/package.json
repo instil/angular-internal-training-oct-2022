@@ -1,0 +1,15 @@
+{
+  "name": "htmx-test2",
+  "version": "1.0.0",
+  "description": "",
+  "main": "main.js",
+  "scripts": {
+    "start": "http-server"
+  },
+  "dependencies": {
+    "http-server": "^14.1.1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}

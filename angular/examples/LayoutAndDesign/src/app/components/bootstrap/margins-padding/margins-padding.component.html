@@ -1,0 +1,69 @@
+<div class="outer">
+  <div class="inner">
+    None
+  </div>
+</div>
+<hr>
+
+<h2>Margin vs Padding</h2>
+
+<div>
+  <label>Margin:</label>
+  <input type="range" min="0" max="5" [(ngModel)]="margin">
+</div>
+<div>
+  <label>Padding:</label>
+  <input type="range" min="0" max="5" [(ngModel)]="padding">
+</div>
+
+<div class="outer">
+  <div class="inner m-{{margin}} p-{{padding}}">
+    <div>Margin: m-{{margin}}</div>
+    <div>Padding: m-{{padding}}</div>
+  </div>
+</div>
+
+<h2>Vertical Collapsing Margins</h2>
+
+Be careful with CSS margins. Vertical margins collapse if nested elements are empty.
+This example is the same as one above but the border is removed so it collapses the vertical
+margin between the inner and outer divs. The inner div's margin is still maintained but with
+this text.
+
+<div class="outer" style="border: none">
+  <div class="inner m-5">
+    Margin: m-5
+  </div>
+</div>
+
+<h2>Single Side Margin</h2>
+
+<div class="outer">
+  <div class="inner ms-5">
+    Start: ms-5 (ml-5 in version < 5)
+  </div>
+</div>
+<hr>
+<div class="outer">
+  <div class="inner me-5">
+    End: me-5 (mr-5 in version < 5)
+  </div>
+</div>
+<hr>
+<div class="outer">
+  <div class="inner mt-5">
+    Top: mt-5
+  </div>
+</div>
+<hr>
+<div class="outer">
+  <div class="inner mb-5">
+    Top: mb-5
+  </div>
+</div>
+<hr>
+<div class="outer">
+  <div class="inner mt-1 ms-2 mb-3 me-4">
+    Mix
+  </div>
+</div>

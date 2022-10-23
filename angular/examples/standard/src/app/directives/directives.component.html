@@ -1,0 +1,12 @@
+<h3>An example of a custom structural directive</h3>
+
+<label>
+  Repetitions:
+  <input type="range" min="1" max="10" [(ngModel)]="count">
+</label>
+
+<!-- INTERESTING: We can use custom directives -->
+<!--              We have implicit as well as named data elements -->
+<p *appInstilRepeat="count let foo; let double=doubleIndex">
+  Repeat iteration {{ foo }} - Double: {{ double }}
+</p>

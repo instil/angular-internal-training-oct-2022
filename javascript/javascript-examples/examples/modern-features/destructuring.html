@@ -1,0 +1,55 @@
+<div>
+    <script>
+        (function () {
+            const sampleData = ["abc", 123, "def", 456];
+
+            printTitle("Destructure an array");
+            let [val1, val2, val3, val4] = sampleData;
+            printResult(val1);
+            printResult(val2);
+            printResult(val3);
+            printResult(val4);
+
+            printTitle("Destructure an array with a spread operator");
+            let [value1, value2, ...value3] = sampleData;
+            printResult(value1);
+            printResult(value2);
+            printResult(value3);
+
+            let sampleObject = {
+                name: "Dave",
+                age: 34,
+                salary: 30000.0,
+                address: "10 Arcatia Road"
+            };
+
+            printTitle("Destructure an object using default names");
+            let {name, age, salary, address} = sampleObject;
+            printResult(name);
+            printResult(age);
+            printResult(salary);
+            printResult(address);
+
+            printTitle("Destructure an object using custom names");
+            let {name: p1, age: p2, salary: p3, address: p4} = sampleObject;
+            printResult(p1);
+            printResult(p2);
+            printResult(p3);
+            printResult(p4);
+
+
+            printTitle("Copy an object with changes via spread operator");
+            let newEmployee = {
+                ...sampleObject,
+                name: "Jane",
+                address: "12 Arcatia Road"
+            };
+            printObject(newEmployee);
+
+            printTitle("Copy an array via spread operator");
+            let newArray = ["start", ...sampleData, "end"];
+            printResult(newArray);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

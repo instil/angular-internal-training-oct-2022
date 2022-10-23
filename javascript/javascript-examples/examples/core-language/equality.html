@@ -1,0 +1,60 @@
+<div>
+    <script>
+        (function () {
+            let myVar1 = null;
+            let myVar2;
+
+            if (myVar1 == myVar2) {
+                printResult("null and undefined ARE considered equal with ==");
+            } else {
+                printResult("null and undefined ARE NOT considered equal with ==");
+            }
+
+            if (myVar1 === myVar2) {
+                printResult("null and undefined ARE considered equal with ===");
+            } else {
+                printResult("null and undefined ARE NOT considered equal with ===");
+            }
+
+            myVar1 = 123;
+            myVar2 = "123";
+
+            if (myVar1 == myVar2) {
+                printResult("strings and numbers CAN be compared with ==");
+            } else {
+                printResult("strings and numbers CANNOT be compared with ==");
+            }
+
+            if (myVar1 === myVar2) {
+                printResult("strings and numbers CAN be compared with ===");
+            } else {
+                printResult("strings and numbers CANNOT be compared with ===");
+            }
+
+            myVar1 = 1;
+            myVar2 = true;
+
+            if (myVar1 == myVar2) {
+                printResult("true and 1 ARE identical with ==");
+            } else {
+                printResult("true and 1 ARE NOT identical with ==");
+            }
+
+            if (myVar1 === myVar2) {
+                printResult("true and 1 ARE identical with ===");
+            } else {
+                printResult("true and 1 ARE NOT identical with ===");
+            }
+
+            myVar1 = 2;
+            myVar2 = true;
+
+            if (myVar1 == myVar2) {
+                printResult("true and numbers other than one ARE identical with ==");
+            } else {
+                printResult("true and numbers other than one ARE NOT identical with ==");
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

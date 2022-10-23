@@ -1,0 +1,70 @@
+<div>
+    <script>
+        (async function () {
+            async function promisesDemo() {
+                printTitle("Promises");
+                return doAfter(1, 1000)
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .catch(error => printResult("Error occurred: " + error));
+            }
+
+            async function promisesDemoWithError() {
+                printTitle("Promises with error");
+                return doAfter(1, 1000)
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .then(() => Promise.reject("Some error"))
+                    .then(step => doAfter(++step, 1000))
+                    .then(step => doAfter(++step, 1000))
+                    .catch(error => printResult("Error occurred: " + error));
+            }
+
+            async function asyncAwaitDemo() {
+                printTitle("Async methods");
+                try {
+                    let step = await doAfter(1, 1000);
+                    step = await doAfter(++step, 1000);
+                    step = await doAfter(++step, 1000);
+                    step = await doAfter(++step, 1000);
+                    step = await doAfter(++step, 1000);
+                    return doAfter(++step, 1000);
+                } catch (error) {
+                    printResult("Error occurred: " + error);
+                }
+            }
+
+            async function asyncAwaitDemoWithError() {
+                printTitle("Async methods with error");
+                try {
+                    let step = await doAfter(1, 1000);
+                    step = await doAfter(++step, 1000);
+                    step = await doAfter(++step, 1000);
+                    step = await doAfter(++step, 1000);
+                    await Promise.reject("Some error");
+                    step = await doAfter(++step, 1000);
+                    return await doAfter(++step, 1000);
+                } catch (error) {
+                    printResult("Error occurred: " + error);
+                }
+            }
+
+            function doAfter(step, delay) {
+                return new Promise((resolve, reject) => {
+                    printResult("Step " + step);
+                    setTimeout(() => resolve(step), delay);
+                });
+            }
+
+            await promisesDemo();
+            await promisesDemoWithError();
+            await asyncAwaitDemo();
+            await asyncAwaitDemoWithError();
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

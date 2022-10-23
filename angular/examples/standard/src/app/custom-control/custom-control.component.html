@@ -1,0 +1,34 @@
+<div>
+  <h2>Two Way Binding</h2>
+  <p>Value: {{bindingNumber}}</p>
+  <div>
+    <app-counter-input label="Template Number"
+                       [(value)]="bindingNumber">
+    </app-counter-input>
+  </div>
+</div>
+
+<div>
+  <h2>Template Driven</h2>
+  <p>Value: {{templateNumber}}</p>
+  <div>
+    <app-counter-input label="Template Number"
+                       [(ngModel)]="templateNumber"
+                       [min]="35" [max]="45">
+    </app-counter-input>
+  </div>
+</div>
+
+<hr>
+
+<div>
+  <h2>Reactive Driven</h2>
+  <p>Value: {{reactiveNumber}}</p>
+  <div>
+    <form [formGroup]="form">
+      <app-counter-input label="Reactive Number"
+                         formControlName="reactiveNumber">
+      </app-counter-input>
+    </form>
+  </div>
+</div>

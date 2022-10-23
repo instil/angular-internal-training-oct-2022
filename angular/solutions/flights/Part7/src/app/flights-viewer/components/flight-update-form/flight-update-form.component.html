@@ -1,0 +1,83 @@
+<form [formGroup]="form" (ngSubmit)="updateFlight()">
+  <div class="has-error" *ngIf="form.hasError('identicalAirports')">
+    The two airports must not be identical!
+  </div>
+  <div>
+    <div class="row">
+      <fieldset class="col-md-12">
+        <label>
+          Flight Id:
+          <input readonly type="text" formControlName="id">
+        </label>
+        <ng-container *ngIf="form.controls.id.errors">
+          <span class="error-msg" *ngIf="form.controls.id.hasError('required')">
+            The flight number is required
+          </span>
+          <span class="error-msg" *ngIf="form.controls.id.hasError('pattern')">
+            The value {{form.controls.id.value}} is not three digits
+          </span>
+        </ng-container>
+      </fieldset>
+    </div>
+    <div class="row">
+      <div class="col-md-5">
+        <fieldset>
+          <label>
+            Flight Origin:
+            <input size="30" type="text" formControlName="origin">
+          </label>
+          <ng-container *ngIf="form.controls.origin.errors">
+            <span class="error-msg" *ngIf="form.controls.origin.hasError('required')">
+              The origin airport is required
+            </span>
+            <span class="error-msg" *ngIf="form.controls.origin.hasError('pattern')">
+              The value {{form.controls.origin.value}} contains characters other than letters and spaces
+            </span>
+          </ng-container>
+        </fieldset>
+
+        <fieldset>
+          <label>
+            Departure Time:
+            <input size="30" type="date" formControlName="departure">
+          </label>
+          <span class="error-msg"
+                *ngIf="form.controls.departure.errors">The origin airport is required</span>
+        </fieldset>
+      </div>
+
+      <div class="col-md-5">
+        <fieldset>
+          <label>
+            Flight Destination:
+            <input size="30" type="text" formControlName="destination">
+          </label>
+          <ng-container *ngIf="form.controls.destination.errors">
+            <span class="error-msg" *ngIf="form.controls.destination.hasError('required')">
+              The destination airport is required
+            </span>
+            <span class="error-msg" *ngIf="form.controls.destination.hasError('pattern')">
+              The value {{form.controls.destination.value}}
+              contains characters other than letters and spaces
+            </span> q
+          </ng-container>
+        </fieldset>
+        <fieldset>
+          <label>
+            Arrival Time:
+            <input size="30" type="date" formControlName="arrival">
+          </label>
+          <span class="error-msg"
+                *ngIf="form.controls.arrival.errors">The origin airport is required</span>
+        </fieldset>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-md-12">
+        <fieldset>
+          <input class="btn btn-success" type="submit" [disabled]="!form.valid" value="Update Flight"/>
+        </fieldset>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,29 @@
+<h1>Quotes App</h1>
+<table>
+  <thead>
+  <tr>
+    <th>Author</th>
+    <th>Quote</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr *ngFor="let quote of quotations | async" app-quotes-row
+      [text]="quote.text" [source]="quote.source"></tr>
+  </tbody>
+</table>
+
+<hr/>
+
+<form name="quotesForm">
+  <div>
+    <label>Quote text:</label>
+    <input type="text" size="60" name="newText" [(ngModel)]="newText"/>
+  </div>
+  <div>
+    <label>Quote origin:</label>
+    <input type="text" size="20" name="newSource" [(ngModel)]="newSource"/>
+  </div>
+  <div>
+    <input value="Add Quotation" type="button" (click)="addQuotation()"/>
+  </div>
+</form>

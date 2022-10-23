@@ -1,0 +1,36 @@
+<button (click)="addNumber()" class="btn btn-primary m-1">
+  +
+</button>
+<button (click)="removeNumber()" class="btn btn-primary m-1">
+  -
+</button>
+<button (click)="doNothing()" class="btn btn-primary m-1">
+  Do Nothing
+</button>
+
+
+<div class="row">
+  <h2 class="col">Numbers</h2>
+  <h2 class="col">Sum</h2>
+  <h2 class="col">Product</h2>
+  <h2 class="col">Product * 2</h2>
+</div>
+
+<div class="row">
+  <div class="col">
+    <ul>
+      <li *ngFor="let number of numbers">{{number}}</li>
+    </ul>
+  </div>
+  <div class="col">
+    {{numbers | sum}}
+  </div>
+  <div class="col">
+    {{numbers | product}}
+  </div>
+  <div class="col">
+    {{numbers | product:2 }}
+  </div>
+</div>
+<!-- Note that the expression below would mean the pipe would be called, even with static data -->
+<!--{{[1, 2, 3] | product:2 }}-->

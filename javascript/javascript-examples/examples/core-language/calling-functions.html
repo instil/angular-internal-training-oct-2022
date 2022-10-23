@@ -1,0 +1,34 @@
+<div>
+    <script>
+        (function () {
+            printTitle("Calling functions with multiple arguments");
+
+            function printArgs(p1, p2, p3, p4) {
+                printResult(`Function printArgs called with: ${Array.from(arguments)}`);
+            }
+
+            printResult(`Function printArgs expects: ${printArgs.length} arguments`);
+
+            printArgs("a");
+            printArgs("a", "b");
+            printArgs("a", "b", "c");
+            printArgs("a", "b", "c", "d");
+            printArgs("a", "b", "c", "d", "e");
+            printArgs("a", "b", "c", "d", "e", "f");
+
+            printTitle("Calling functions via their address");
+
+            function add(p1, p2) {
+                return p1 + p2;
+            }
+
+            const resultOne = add(15, 3);
+            printResult("First call to add returns: " + resultOne);
+
+            const func = add;
+            const resultTwo = func(12, 7);
+            printResult("Second call to add returns: " + resultTwo);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

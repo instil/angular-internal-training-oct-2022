@@ -1,0 +1,36 @@
+<div>
+    <script>
+        (function () {
+            class ArithmeticSeries {
+                constructor(start, increment) {
+                    this.start = start;
+                    this.increment = increment;
+                }
+
+                [Symbol.iterator]() {
+                    let current = this.start;
+                    return {
+                        next: () => {
+                            let result = {
+                                value: current,
+                                done: false,
+                            };
+                            current += this.increment;
+                            return result;
+                        },
+                    };
+                }
+            }
+
+            printTitle('Iterator Pattern');
+            let series = new ArithmeticSeries(100, 10);
+            for (let value of series) {
+                printResult(value);
+                if (value > 200) {
+                    break;
+                }
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

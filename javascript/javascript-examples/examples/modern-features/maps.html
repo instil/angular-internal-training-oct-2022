@@ -1,0 +1,46 @@
+<div>
+    <script>
+        (function () {
+            const numberMap = new Map();
+            numberMap.set(0, "Zero");
+            numberMap.set(1, "One");
+            numberMap.set(2, "Two");
+            numberMap.set(3, "Three");
+            numberMap.set(4, "Four");
+            numberMap.set(5, "Five");
+
+            printTitle("Map keys");
+            for (let key of numberMap.keys()) {
+                printResult(key);
+            }
+
+            printTitle("Map values");
+            for (let value of numberMap.values()) {
+                printResult(value);
+            }
+
+            printTitle("Destructured map");
+            for (let [key, value] of numberMap) {
+                printResult(`${key} = ${value}`);
+            }
+
+            printTitle("Iterating over a map");
+            let mapIterator = numberMap[Symbol.iterator]();
+            let next = mapIterator.next();
+            while (!next.done) {
+                printResult(next.value);
+                next = mapIterator.next();
+            }
+
+            printTitle("Checking for membership");
+            printResult(numberMap.has(0));
+            printResult(numberMap.has(10));
+
+            printTitle("Remove entries");
+            printResult(`Before delete, a value for the key "0" exists: ${numberMap.has(0)}`);
+            numberMap.delete(0);
+            printResult(`After delete, a value for the key "0" exists: ${numberMap.has(0)}`);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

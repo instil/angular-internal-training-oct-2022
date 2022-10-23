@@ -1,0 +1,45 @@
+<div>
+    <script>
+        (function () {
+            let array = ["abc", 123, "def", 456];
+            printTitle("Original array");
+            printResult(array);
+
+            printTitle("While loop");
+            let index = 0; // Initialisation
+            while (index < array.length) { // Condition
+                printResult(array[index]);
+                index++; // Mutation
+            }
+
+            printTitle("For loop");
+            //   Initialisation     Condition         Mutation
+            for (let index = 0; index < array.length; index++) {
+                printResult(array[index]);
+            }
+
+            printTitle("For..in loop Array");
+            for (let index in array) {
+                printResult(index);
+            }
+
+            printTitle("For..of loop Array");
+            for (let value of array) {
+                printResult(value);
+            }
+
+            let employee = {
+                name: "Dave",
+                age: 34,
+                salary: 30000.0,
+                address: "10 Arcatia Road"
+            };
+
+            printTitle("For..in loop Object");
+            for (let member in employee) {
+                printResult(member);
+            }
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

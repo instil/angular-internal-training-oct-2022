@@ -1,0 +1,40 @@
+<div>
+    <script>
+        (function () {
+            printTitle('Basic arrow functions');
+            const sayHello = () => {
+                printResult('Hello');
+            };
+            const sayHelloTo = (person) => {
+                printResult(`Hello ${person}`);
+            };
+            const sayGoodbyeTo = person => {
+                printResult(`Goodbye ${person}`);
+            };
+            sayHello();
+            sayHelloTo('Jane');
+            sayGoodbyeTo('Dave');
+
+
+            const sampleData = ["abc", 123, "def", 456, "ghi", 789];
+
+            printTitle("Arrow functions as inputs");
+            const numbers = sampleData.filter(value => typeof (value) === "number");
+            numbers.forEach(value => printResult(value));
+
+            printTitle("Removing unnecessary Arrows");
+            numbers.forEach(printResult);
+
+            printTitle("Multi line function");
+
+            // braces required and therefore the return keyword
+            const strings = sampleData.map(value => {
+                value += "-stuff";
+                return value.toUpperCase();
+            });
+
+            strings.forEach(printResult);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>

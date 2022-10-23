@@ -1,0 +1,52 @@
+<div>
+    <script>
+        (function () {
+            function switchInFunction(num) {
+                // Inside the function we can return instead of break
+                switch (num) {
+                    case 0: return "x is zero";
+                    case 1: return "x is one";
+                    case 2:
+                    case 3: return "x is two or three";
+                    default: return "x is something else";
+                }
+            }
+
+            let x = Math.floor(Math.random() * 15) + 1;
+
+            printTitle("If Else Statement")
+            if (x < 5) {
+                printResult("X is less than 5");
+            } else if (x < 10) {
+                printResult("X is less than 10");
+            }  else {
+                printResult("Not sure about x");
+            }
+
+            printTitle("Ternary Operator");
+            let state = x % 2 === 0 ? 'even' : 'false';
+            printResult(state);
+            printResult(x % 2 === 0 ? 'even' : 'false');
+
+            printTitle("Switch Statement");
+            // Cases have breaks to avoid fallthrough
+            switch (x) {
+                case 0:
+                    printResult("x is zero");
+                    break;
+                case 1:
+                    printResult("x is one");
+                    break;
+                case 2:
+                case 3:
+                    printResult("x is two or three");
+                    break;
+                default:
+                    printResult("x is something else");
+            }
+
+            switchInFunction(x);
+        })();
+    </script>
+    <pre id="output"></pre>
+</div>
