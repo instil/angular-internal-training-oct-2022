@@ -1,0 +1,16 @@
+{
+  "name": "services",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "json-server -p 8080 db.json",
+    "start-watch": "json-server -p 8080 --watch db.json",
+    "start-auth": "json-server -m simpleAuth.js -p 8080 --watch db.json"
+  },
+  "author": "Instil Software",
+  "license": "LICENSE.md",
+  "dependencies": {
+    "json-server": "^0.16.3"
+  }
+}

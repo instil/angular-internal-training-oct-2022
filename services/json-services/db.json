@@ -1,0 +1,218 @@
+{
+  "courses": [
+    {
+      "id": "AB12",
+      "title": "Intro to Scala",
+      "difficulty": "BEGINNER",
+      "duration": 4
+    },
+    {
+      "id": "CD34",
+      "title": "JEE Web Development",
+      "difficulty": "INTERMEDIATE",
+      "duration": 3
+    },
+    {
+      "id": "EF56",
+      "title": "Meta-Programming in Ruby",
+      "difficulty": "ADVANCED",
+      "duration": 2
+    },
+    {
+      "id": "GH78",
+      "title": "OO Design with UML",
+      "difficulty": "BEGINNER",
+      "duration": 3
+    },
+    {
+      "id": "IJ90",
+      "title": "Database Access with JPA",
+      "difficulty": "INTERMEDIATE",
+      "duration": 3
+    },
+    {
+      "id": "KL12",
+      "title": "Design Patterns in C#",
+      "difficulty": "ADVANCED",
+      "duration": 2
+    },
+    {
+      "id": "MN34",
+      "title": "Relational Database Design",
+      "difficulty": "BEGINNER",
+      "duration": 4
+    },
+    {
+      "id": "OP56",
+      "title": "Writing MySql Stored Procedures",
+      "difficulty": "INTERMEDIATE",
+      "duration": 1
+    },
+    {
+      "id": "QR78",
+      "title": "Patterns of Parallel Programming",
+      "difficulty": "ADVANCED",
+      "duration": 2
+    },
+    {
+      "id": "ST90",
+      "title": "C++ Programming for Beginners",
+      "difficulty": "BEGINNER",
+      "duration": 5
+    },
+    {
+      "id": "UV12",
+      "title": "UNIX Threading with PThreads",
+      "difficulty": "INTERMEDIATE",
+      "duration": 2
+    },
+    {
+      "id": "WX34",
+      "title": "Writing Linux Device Drivers",
+      "difficulty": "ADVANCED",
+      "duration": 3
+    }
+  ],
+  "flights": [
+    {
+      "id": 101,
+      "origin": "Belfast City",
+      "destination": "London Gatwick",
+      "departure": "2021-01-03T14:55:14.547Z",
+      "arrival": "2021-01-04T14:55:14.548Z"
+    },
+    {
+      "id": 102,
+      "origin": "Belfast City",
+      "destination": "Birmingham",
+      "departure": "2021-01-13T14:55:14.549Z",
+      "arrival": "2021-01-14T14:55:14.549Z"
+    },
+    {
+      "id": 103,
+      "origin": "Dublin",
+      "destination": "Edinburgh",
+      "departure": "2021-01-23T14:55:14.549Z",
+      "arrival": "2021-01-24T14:55:14.549Z"
+    },
+    {
+      "id": 104,
+      "origin": "Belfast City",
+      "destination": "Birmingham",
+      "departure": "2021-01-15T14:55:14.549Z",
+      "arrival": "2021-01-16T14:55:14.549Z"
+    },
+    {
+      "id": 105,
+      "origin": "Belfast City",
+      "destination": "London Gatwick",
+      "departure": "2021-01-05T14:55:14.548Z",
+      "arrival": "2021-01-06T14:55:14.549Z"
+    },
+    {
+      "id": 201,
+      "origin": "Belfast City",
+      "destination": "Birmingham",
+      "departure": "2021-01-17T14:55:14.549Z",
+      "arrival": "2021-01-18T14:55:14.549Z"
+    },
+    {
+      "id": 202,
+      "origin": "Belfast City",
+      "destination": "London Gatwick",
+      "departure": "2021-01-07T14:55:14.549Z",
+      "arrival": "2021-01-08T14:55:14.549Z"
+    },
+    {
+      "id": 203,
+      "origin": "Belfast City",
+      "destination": "London Gatwick",
+      "departure": "2021-01-09T14:55:14.549Z",
+      "arrival": "2021-01-10T14:55:14.549Z"
+    },
+    {
+      "id": 204,
+      "origin": "Dublin",
+      "destination": "Edinburgh",
+      "departure": "2021-01-27T14:55:14.549Z",
+      "arrival": "2021-01-28T14:55:14.549Z"
+    },
+    {
+      "id": 205,
+      "origin": "Dublin",
+      "destination": "Edinburgh",
+      "departure": "2021-01-25T14:55:14.549Z",
+      "arrival": "2021-01-26T14:55:14.549Z"
+    },
+    {
+      "id": 301,
+      "origin": "Belfast City",
+      "destination": "Birmingham",
+      "departure": "2021-01-19T14:55:14.549Z",
+      "arrival": "2021-01-20T14:55:14.549Z"
+    },
+    {
+      "id": 302,
+      "origin": "Belfast City",
+      "destination": "Birmingham",
+      "departure": "2021-01-21T14:55:14.549Z",
+      "arrival": "2021-01-22T14:55:14.549Z"
+    },
+    {
+      "id": 303,
+      "origin": "Dublin",
+      "destination": "Manchester",
+      "departure": "2021-01-04T14:55:14.549Z",
+      "arrival": "2021-01-05T14:55:14.549Z"
+    },
+    {
+      "id": 304,
+      "origin": "Dublin",
+      "destination": "Manchester",
+      "departure": "2021-01-02T14:55:14.549Z",
+      "arrival": "2021-01-03T14:55:14.549Z"
+    },
+    {
+      "id": 305,
+      "origin": "Dublin",
+      "destination": "Edinburgh",
+      "departure": "2021-01-29T14:55:14.549Z",
+      "arrival": "2021-01-30T14:55:14.549Z"
+    },
+    {
+      "id": 401,
+      "origin": "Dublin",
+      "destination": "Edinburgh",
+      "departure": "2021-01-31T14:55:14.549Z",
+      "arrival": "2021-02-01T14:55:14.549Z"
+    },
+    {
+      "id": 402,
+      "origin": "Dublin",
+      "destination": "Manchester",
+      "departure": "2021-01-06T14:55:14.549Z",
+      "arrival": "2021-01-07T14:55:14.549Z"
+    },
+    {
+      "id": 403,
+      "origin": "Dublin",
+      "destination": "Manchester",
+      "departure": "2021-01-08T14:55:14.549Z",
+      "arrival": "2021-01-09T14:55:14.549Z"
+    },
+    {
+      "id": 404,
+      "origin": "Belfast City",
+      "destination": "London Gatwick",
+      "departure": "2021-01-11T14:55:14.549Z",
+      "arrival": "2021-01-12T14:55:14.549Z"
+    },
+    {
+      "id": 405,
+      "origin": "Dublin",
+      "destination": "Manchester",
+      "departure": "2021-01-10T14:55:14.549Z",
+      "arrival": "2021-01-11T14:55:14.549Z"
+    }
+  ]
+}
